@@ -14,6 +14,8 @@
 		7C794BED1A996ACA00FBC428 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C794BEC1A996ACA00FBC428 /* Images.xcassets */; };
 		7C794BF01A996ACA00FBC428 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C794BEE1A996ACA00FBC428 /* LaunchScreen.xib */; };
 		7C794BFC1A996ACA00FBC428 /* USC_Web_RegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BFB1A996ACA00FBC428 /* USC_Web_RegistrationTests.swift */; };
+		7C794C071A996B5600FBC428 /* local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C051A996B5600FBC428 /* local.swift */; };
+		7C794C081A996B5600FBC428 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C061A996B5600FBC428 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		7C794BF51A996ACA00FBC428 /* USC Web RegistrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "USC Web RegistrationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C794BFA1A996ACA00FBC428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C794BFB1A996ACA00FBC428 /* USC_Web_RegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USC_Web_RegistrationTests.swift; sourceTree = "<group>"; };
+		7C794C051A996B5600FBC428 /* local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = local.swift; sourceTree = "<group>"; };
+		7C794C061A996B5600FBC428 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 			children = (
 				7C794BE21A996ACA00FBC428 /* AppDelegate.swift */,
 				7C794BE71A996ACA00FBC428 /* ViewController.swift */,
+				7C794C051A996B5600FBC428 /* local.swift */,
+				7C794C061A996B5600FBC428 /* SwiftyJSON.swift */,
 				7C794BE91A996ACA00FBC428 /* Main.storyboard */,
 				7C794BEC1A996ACA00FBC428 /* Images.xcassets */,
 				7C794BEE1A996ACA00FBC428 /* LaunchScreen.xib */,
@@ -216,7 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C794BE81A996ACA00FBC428 /* ViewController.swift in Sources */,
+				7C794C071A996B5600FBC428 /* local.swift in Sources */,
 				7C794BE31A996ACA00FBC428 /* AppDelegate.swift in Sources */,
+				7C794C081A996B5600FBC428 /* SwiftyJSON.swift in Sources */,
 				7C794BE61A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
