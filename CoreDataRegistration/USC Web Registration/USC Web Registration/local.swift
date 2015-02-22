@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 struct section {
     
@@ -50,6 +52,7 @@ struct course {
     var description: String //course description
     var divFlag: String //"Y" indicates that diversity requirement is fulfilled
     var effecTerm: String //Semester that the course belongs to
+    
 }
 
 struct department {
@@ -60,6 +63,8 @@ struct department {
     
 }
 
+
+
 struct school {
     
     var schoolCode: String
@@ -68,57 +73,102 @@ struct school {
     
 }
 
-
-
 class localStorage {
     
-    struct storage {
-        var currentSections: [section] = []
-    }
     
     
     class func getAPIdata () {
-
-     let session = NSURLSession.sharedSession()
         
-       var request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Schools/")!)
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
         
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+        var request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Schools/ALL")!)
+        
+        var task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) ->
+            Void in
             
             var err: NSError?
-            
-            //var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
-            
             var json = JSON(data: data)
-            
-           // var schoolDict = json[0] as NSDictionary
             
             for i in 0 ... json.arrayValue.count {
             
+               let tempSchool = NSEntityDescription.insertNewObjectForEntityForName("School", inManagedObjectContext: context!) as School
                 
-            var schoolname = json[i]["SOC_SCHOOL_DESCRIPTION"].stringValue
+                tempSchool.schoolDescription = json[i]["SOC_SCHOOL_DESCRIPTION"].stringValue
+                tempSchool.schoolCode = json[i]["SOC_SCHOOL_CODE"].stringValue
                 
+                for j in 0 ... json[i]["SOC_DEPARTMENT_CODE"].arrayValue.count {
+                    
+                        let tempDept = NSEntityDescription.insertNewObjectForEntityForName("Department", inManagedObjectContext: context!) as Department
+                        tempDept.departmentCode = json[i][j]["SOC_DEPARTMENT_CODE"].stringValue
+                        tempDept.departmentDescription = json[i][j]["SOC_DEPARTMENT_DESCRIPTION"].stringValue
+                        tempDept.schoolCode = json[i][j]["SOC_SCHOOL_CODE"].stringValue
+                    
+                }
                 
-            self.dataArray.append(newschool)
-    
             }
-            
-            /*
-            
-            if let resultArray = json.arrayvalue {
-                
-                var schools = (Schools)[]
-                
-                
-                
-            self.dataArray = jsonResult
-            
-           // println(NSString(data: data, encoding: NSUTF8StringEncoding)) */
-            
+            println("fetched schools and deparments")
         })
         
+        task.resume()
     
-    
+        request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Courses/20151/ALL")!)
+        
+        task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) ->
+            Void in
+            
+            var err: NSError?
+            var json = JSON(data: data)
+            
+            for i in 0 ... json.arrayValue.count {
+                
+                let tempCourse = NSEntityDescription.insertNewObjectForEntityForName("Course", inManagedObjectContext: context!) as Course
+                
+                tempCourse.courseID = json[i]["COURSE_ID"].doubleValue
+                tempCourse.sisCourseID = json[i]["SIS_COURSE_ID"].stringValue
+                tempCourse.title = json[i]["TITLE"].stringValue
+                tempCourse.minUnits = json[i]["MIN_UNITS"].doubleValue
+                tempCourse.maxUnits = json[i]["MAX_UNITS"].doubleValue
+                tempCourse.totalMax = json[i]["TOTAL_MAX_UNITS"].doubleValue
+                tempCourse.courseDescription = json[i]["DECRIPTION"].stringValue
+                tempCourse.divFlag = json[i]["DIVERSITY_FLAG"].stringValue
+                tempCourse.effecTerm = json[i]["EFFECTIVE_TERM_CODE"].stringValue
+
+
+                for j in 0 ... json[i].arrayValue.count {
+                    
+                
+                    let tempSection = NSEntityDescription.insertNewObjectForEntityForName("Section", inManagedObjectContext: context!) as Section
+                    
+                    tempSection.termCode = json[i][j]["TERM_CODE"].stringValue
+                    tempSection.courseID = json[i][j]["COURSE_ID"].doubleValue
+                    tempSection.sisCourseID = json[i][j]["SIS_COURSE_ID"].stringValue
+                    tempSection.name = json [i][j]["NAME"].stringValue
+                    tempSection.section = json[i][j]["SECTION"].stringValue
+                    tempSection.session = json[i][j]["SESSION"].stringValue
+                    tempSection.units = json[i][j]["UNIT_CODE"].doubleValue
+                    tempSection.type = json[i][j]["TYPE"].stringValue
+                    tempSection.beginTime = json[i][j]["BEGIN_TIME"].stringValue
+                    tempSection.endTime = json[i][j]["END_TIME"].stringValue
+                    tempSection.day = json[i][j]["DAY"].stringValue
+                    tempSection.numRegistered = json[i][j]["REGISTERED"].doubleValue
+                    tempSection.numSeats = json[i][j]["SEATS"].doubleValue
+                    tempSection.instructor = json[i][j]["INSTRUCTOR"].stringValue
+                    tempSection.location = json[i][j]["LOCATION"].stringValue
+                    tempSection.addDate = json[i][j]["ADD_DATE"].stringValue
+                    tempSection.cancelDate = json[i][j]["CANCEL_DATE"].stringValue
+                    tempSection.publishFlag = json[i][j]["PUBLISH_FLAG"].stringValue
+                    tempSection.inCourseBin = 0
+                    
+                }
+                
+                
+            }
+            println("fetched all courses and sections")
+        })
+        
+        task.resume()
+        
     }
     
     class func getCurrentSections() -> [section]{ //returns array of sections currently enrolled in 
@@ -139,7 +189,7 @@ class localStorage {
     
     }
     
-    class func getSchoolList () -> [school] {
+    class func getSchoolList () -> [School] {
         
         /*
         

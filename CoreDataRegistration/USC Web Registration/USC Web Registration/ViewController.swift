@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
+        
+        let context = self
         super.viewDidLoad()
+        
+        localStorage.getAPIdata()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
