@@ -14,6 +14,9 @@
 		1F4497C31A94615E002A53B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4497C21A94615E002A53B3 /* Images.xcassets */; };
 		1F4497C61A94615E002A53B3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4497C41A94615E002A53B3 /* LaunchScreen.xib */; };
 		1F4497D21A94615E002A53B3 /* USC_RegTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4497D11A94615E002A53B3 /* USC_RegTests.swift */; };
+		7C1B486B1A995FFD00375D9B /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C1B48691A995FFD00375D9B /* DataModel.xcdatamodeld */; };
+		7C1B486D1A99683000375D9B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1B486C1A99683000375D9B /* SwiftyJSON.swift */; };
+		7CABDDAA1A98606B000325E6 /* local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CABDDA91A98606B000325E6 /* local.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		1F4497CB1A94615E002A53B3 /* USC RegTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "USC RegTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F4497D01A94615E002A53B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F4497D11A94615E002A53B3 /* USC_RegTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USC_RegTests.swift; sourceTree = "<group>"; };
+		7C1B486A1A995FFD00375D9B /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		7C1B486C1A99683000375D9B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		7CABDDA91A98606B000325E6 /* local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = local.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 		1F4497AA1A94615E002A53B3 = {
 			isa = PBXGroup;
 			children = (
+				7C1B486C1A99683000375D9B /* SwiftyJSON.swift */,
+				7CABDDA91A98606B000325E6 /* local.swift */,
+				7C1B48691A995FFD00375D9B /* DataModel.xcdatamodeld */,
 				1F4497B51A94615E002A53B3 /* USC Reg */,
 				1F4497CE1A94615E002A53B3 /* USC RegTests */,
 				1F4497B41A94615E002A53B3 /* Products */,
@@ -216,6 +225,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F4497BE1A94615E002A53B3 /* ViewController.swift in Sources */,
+				7C1B486B1A995FFD00375D9B /* DataModel.xcdatamodeld in Sources */,
+				7CABDDAA1A98606B000325E6 /* local.swift in Sources */,
+				7C1B486D1A99683000375D9B /* SwiftyJSON.swift in Sources */,
 				1F4497BC1A94615E002A53B3 /* USC_Reg.xcdatamodeld in Sources */,
 				1F4497B91A94615E002A53B3 /* AppDelegate.swift in Sources */,
 			);
@@ -409,6 +421,7 @@
 				1F4497D71A94615E002A53B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F4497D81A94615E002A53B3 /* Build configuration list for PBXNativeTarget "USC RegTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +430,7 @@
 				1F4497DA1A94615E002A53B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -428,6 +442,16 @@
 			);
 			currentVersion = 1F4497BB1A94615E002A53B3 /* USC_Reg.xcdatamodel */;
 			path = USC_Reg.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		7C1B48691A995FFD00375D9B /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7C1B486A1A995FFD00375D9B /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 7C1B486A1A995FFD00375D9B /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

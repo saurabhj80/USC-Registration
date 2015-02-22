@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  USC Reg
+//  USC Web Registration
 //
-//  Created by Saurabh Jain on 2/17/15.
-//  Copyright (c) 2015 Saurabh Jain. All rights reserved.
+//  Created by Darvish Kamalia on 2/21/15.
+//  Copyright (c) 2015 Darvish Kamalia. All rights reserved.
 //
 
 import UIKit
@@ -12,9 +12,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        localStorage.getAPIdata()
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
