@@ -17,7 +17,7 @@
 		1FCBD82F1A9AD810002402FD /* CourseBinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBD82E1A9AD810002402FD /* CourseBinTableViewController.swift */; };
 		1FCBD8311A9AF1D6002402FD /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBD8301A9AF1D6002402FD /* EventKit.framework */; };
 		1FCBD8331A9AF1DA002402FD /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCBD8321A9AF1DA002402FD /* EventKitUI.framework */; };
-		1FCBD8371A9B01E3002402FD /* CourseBinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBD8361A9B01E3002402FD /* CourseBinTableViewCell.swift */; };
+		1FCBD8391A9B2079002402FD /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBD8381A9B2079002402FD /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 		1FCBD82E1A9AD810002402FD /* CourseBinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseBinTableViewController.swift; sourceTree = "<group>"; };
 		1FCBD8301A9AF1D6002402FD /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		1FCBD8321A9AF1DA002402FD /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
-		1FCBD8361A9B01E3002402FD /* CourseBinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseBinTableViewCell.swift; sourceTree = "<group>"; };
+		1FCBD8381A9B2079002402FD /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +94,7 @@
 				1F4497B81A94615E002A53B3 /* AppDelegate.swift */,
 				1F4497BF1A94615E002A53B3 /* Main.storyboard */,
 				1FCBD82E1A9AD810002402FD /* CourseBinTableViewController.swift */,
-				1FCBD8361A9B01E3002402FD /* CourseBinTableViewCell.swift */,
+				1FCBD8381A9B2079002402FD /* DetailsViewController.swift */,
 				1FCBD82C1A9AD781002402FD /* local.swift */,
 				1F4497C21A94615E002A53B3 /* Images.xcassets */,
 				1F4497C41A94615E002A53B3 /* LaunchScreen.xib */,
@@ -232,8 +232,8 @@
 				1FCBD82D1A9AD781002402FD /* local.swift in Sources */,
 				1F4497BC1A94615E002A53B3 /* USC_Reg.xcdatamodeld in Sources */,
 				1FCBD82F1A9AD810002402FD /* CourseBinTableViewController.swift in Sources */,
-				1FCBD8371A9B01E3002402FD /* CourseBinTableViewCell.swift in Sources */,
 				1F4497B91A94615E002A53B3 /* AppDelegate.swift in Sources */,
+				1FCBD8391A9B2079002402FD /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

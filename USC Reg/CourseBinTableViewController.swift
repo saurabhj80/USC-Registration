@@ -7,20 +7,24 @@
 //
 
 import UIKit
-import EventKit
-import EventKitUI
 
-class CourseBinTableViewController: UITableViewController , EKEventEditViewDelegate {
+
+class CourseBinTableViewController: UITableViewController  {
 
     var arr:[section] = [];
-    var eventStore = EKEventStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
-        self.navigationItem.title = "Course Bin"
-        self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.blackColor(),NSForegroundColorAttributeName, UIFont(name: "GillSans-light", size: 22)!, NSFontAttributeName)
+        
+        var v:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 50))
+        v.text = "Course Bin"
+        v.textColor = UIColor.whiteColor()
+        v.font = UIFont(name: "GillSans-light", size: 22)
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 189.0/256, green: 125.0/256, blue: 128.0/256, alpha: 1)
+        self.navigationItem.titleView = v
         
         arr = localStorage.getCurrentSections()
         
@@ -38,30 +42,16 @@ class CourseBinTableViewController: UITableViewController , EKEventEditViewDeleg
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CourseBinTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
-        var obj:section = self.arr[indexPath.row]
+        cell.textLabel?.text = self.arr[indexPath.row].sisCourseID
+        cell.textLabel?.font = UIFont(name: "GillSans-light", size: 22)
         
-        cell.name?.text = obj.sisCourseID
-        cell.type.text = obj.type
-        cell.unit.text = "\(obj.units)"
-        cell.beginTime.text = obj.beginTime
-        cell.location.text = obj.location
-        cell.section.text = obj.section;
-        
-        if obj.instructor != "na"
-        {
-            cell.instructor.text = obj.instructor
-            
-        } else {
-            
-            cell.instructor.text = ""
-        }
         return cell
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 200;
+        return 50;
     }
     
     // MARK : Table View Delegate
@@ -70,70 +60,33 @@ class CourseBinTableViewController: UITableViewController , EKEventEditViewDeleg
         
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        self.createEvent(indexPath)
+        self.performSegueWithIdentifier("details", sender: indexPath)
     }
     
-    // Helper method
-    
-    func createEvent(indexPath: NSIndexPath)
-    {
-        var formatter:NSDateFormatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd hh a";
-        formatter.locale = NSLocale.currentLocale()
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        var obj = self.arr[indexPath.row]
-        
-        var date = NSDate()
-        var year = NSCalendar.currentCalendar().component(NSCalendarUnit.YearCalendarUnit, fromDate: date)
-        var month = NSCalendar.currentCalendar().component(NSCalendarUnit.MonthCalendarUnit, fromDate: date)
-        var day = NSCalendar.currentCalendar().component(NSCalendarUnit.DayCalendarUnit, fromDate: date)
-        
-        obj.beginTime = "\(year)-" + "\(month)-" + "\(day)" + " " + obj.beginTime
-        obj.endTime = "\(year)-" + "\(month)-" + "\(day)" + " " + obj.endTime
-        
-        var startdate:NSDate = formatter.dateFromString(obj.beginTime)!
-        var endDate:NSDate   = formatter.dateFromString(obj.endTime)!
-        
-        var event = EKEvent(eventStore: eventStore)
-        event.startDate = startdate
-        event.endDate = endDate
-        event.availability = EKEventAvailabilityBusy
-        event.calendar = eventStore.defaultCalendarForNewEvents
-        
-        eventStore.requestAccessToEntityType(EKEntityTypeEvent) { (success, error) -> Void in
-            
-            if(success)
-            {
-                var eventview = EKEventEditViewController()
-                eventview.event = event
-                eventview.eventStore = self.eventStore
-                eventview.editViewDelegate = self;
-                
-                self.presentViewController(eventview, animated: true, completion: nil)
-            }
-        }
-
-    }
-    
-    // MARK : EKEvent Edit View Delegate
-    
-    func eventEditViewController(controller: EKEventEditViewController!, didCompleteWithAction action: EKEventEditViewAction)
-    {
-        if action.value == 0
+        if segue.identifier == "details"
         {
-            // Dismiss
+            var vc:DetailsViewController = segue.destinationViewController as DetailsViewController
             
-        } else if action.value == 1{
+            var indexPath:NSIndexPath = sender as NSIndexPath
+            
+            var object:section! = self.arr[indexPath.row]
 
-            var error:NSError?;
-            controller.eventStore.saveEvent(controller.event, span: EKSpanFutureEvents, commit: true, error: &error)
+            if let obj = object{
+                
+                vc.arr.addObject(obj.sisCourseID)
+                vc.arr.addObject(obj.type)
+                vc.arr.addObject("\(obj.units)")
+                vc.arr.addObject(obj.instructor)
+                vc.arr.addObject(obj.section)
+                vc.arr.addObject(obj.location)
+                vc.arr.addObject(obj.beginTime)
+                vc.arr.addObject(obj.endTime)
+            }
+
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    func eventEditViewControllerDefaultCalendarForNewEvents(controller: EKEventEditViewController!) -> EKCalendar! {
-        return eventStore.defaultCalendarForNewEvents
-    }
-    
+
 }
