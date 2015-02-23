@@ -21,7 +21,9 @@ class CourseBinTableViewController: UITableViewController , EKEventEditViewDeleg
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         self.navigationItem.title = "Course Bin"
         self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.blackColor(),NSForegroundColorAttributeName, UIFont(name: "GillSans-light", size: 22)!, NSFontAttributeName)
+        
         arr = localStorage.getCurrentSections()
+        
         self.tableView.reloadData()
     }
 
