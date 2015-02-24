@@ -11,12 +11,20 @@ import CoreData
 
 class ViewController: UIViewController {
 
+    @IBAction func uiButton(sender: AnyObject) {
+        
+        var courseBin = localStorage.getCurrentSections()
+        println(courseBin)
+
+
+        
+    }
     override func viewDidLoad() {
         
         let context = self
         super.viewDidLoad()
         
-        localStorage.getAPIdata()
+      //  localStorage.getAPIdata()
         // Do any additional setup after loading the view, typically from a nib.
     }
     

@@ -12,7 +12,7 @@ import UIKit
 
 struct section {
     
-    var termCode: String
+   // var termcode: String
     var courseID: Double
     var sisCourseID: String
     var name: String
@@ -75,17 +75,18 @@ struct school {
 
 class localStorage {
     
-    
-    
     class func getAPIdata () {
         
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
         
+        println(context)
+        
         var request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Schools/ALL")!)
         
-        var task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) ->
-            Void in
+        var task = NSURLSession.sharedSession().dataTaskWithRequest(request,
+            
+            completionHandler: { (data, response, error) -> Void in
             
             var err: NSError?
             var json = JSON(data: data)
@@ -100,14 +101,16 @@ class localStorage {
                 for j in 0 ... json[i]["SOC_DEPARTMENT_CODE"].arrayValue.count {
                     
                         let tempDept = NSEntityDescription.insertNewObjectForEntityForName("Department", inManagedObjectContext: context!) as Department
-                        tempDept.departmentCode = json[i][j]["SOC_DEPARTMENT_CODE"].stringValue
-                        tempDept.departmentDescription = json[i][j]["SOC_DEPARTMENT_DESCRIPTION"].stringValue
-                        tempDept.schoolCode = json[i][j]["SOC_SCHOOL_CODE"].stringValue
+                        tempDept.departmentCode = json[i]["SOC_DEPARTMENT_CODE"][j]["SOC_DEPARTMENT_CODE"].stringValue
+                        tempDept.departmentDescription = json[i]["SOC_DEPARTMENT_CODE"][j]["SOC_DEPARTMENT_DESCRIPTION"].stringValue
+                        tempDept.schoolCode = json[i]["SOC_DEPARTMENT_CODE"][j]["SOC_SCHOOL_CODE"].stringValue
                     
                 }
                 
             }
-            println("fetched schools and deparments")
+                
+        println("fetched all schools")
+                
         })
         
         task.resume()
@@ -133,32 +136,38 @@ class localStorage {
                 tempCourse.courseDescription = json[i]["DECRIPTION"].stringValue
                 tempCourse.divFlag = json[i]["DIVERSITY_FLAG"].stringValue
                 tempCourse.effecTerm = json[i]["EFFECTIVE_TERM_CODE"].stringValue
-
-
-                for j in 0 ... json[i].arrayValue.count {
+                
+                println(json[i]["V_SOC_SECTION"].arrayValue.count)
+                for j in 0 ... json[i]["V_SOC_SECTION"].arrayValue.count {
                     
                 
                     let tempSection = NSEntityDescription.insertNewObjectForEntityForName("Section", inManagedObjectContext: context!) as Section
                     
-                    tempSection.termCode = json[i][j]["TERM_CODE"].stringValue
-                    tempSection.courseID = json[i][j]["COURSE_ID"].doubleValue
-                    tempSection.sisCourseID = json[i][j]["SIS_COURSE_ID"].stringValue
-                    tempSection.name = json [i][j]["NAME"].stringValue
-                    tempSection.section = json[i][j]["SECTION"].stringValue
-                    tempSection.session = json[i][j]["SESSION"].stringValue
-                    tempSection.units = json[i][j]["UNIT_CODE"].doubleValue
-                    tempSection.type = json[i][j]["TYPE"].stringValue
-                    tempSection.beginTime = json[i][j]["BEGIN_TIME"].stringValue
-                    tempSection.endTime = json[i][j]["END_TIME"].stringValue
-                    tempSection.day = json[i][j]["DAY"].stringValue
-                    tempSection.numRegistered = json[i][j]["REGISTERED"].doubleValue
-                    tempSection.numSeats = json[i][j]["SEATS"].doubleValue
-                    tempSection.instructor = json[i][j]["INSTRUCTOR"].stringValue
-                    tempSection.location = json[i][j]["LOCATION"].stringValue
-                    tempSection.addDate = json[i][j]["ADD_DATE"].stringValue
-                    tempSection.cancelDate = json[i][j]["CANCEL_DATE"].stringValue
-                    tempSection.publishFlag = json[i][j]["PUBLISH_FLAG"].stringValue
-                    tempSection.inCourseBin = 0
+                    tempSection.termCode = json[i]["V_SOC_SECTION"][j]["TERM_CODE"].stringValue
+                    tempSection.courseID = json[i]["V_SOC_SECTION"][j]["COURSE_ID"].doubleValue
+                    tempSection.sisCourseID = json[i]["V_SOC_SECTION"][j]["SIS_COURSE_ID"].stringValue
+                    tempSection.name = json [i]["V_SOC_SECTION"][j]["NAME"].stringValue
+                    tempSection.section = json[i]["V_SOC_SECTION"][j]["SECTION"].stringValue
+                    tempSection.session = json[i]["V_SOC_SECTION"][j]["SESSION"].stringValue
+                    tempSection.units = json[i]["V_SOC_SECTION"][j]["UNIT_CODE"].doubleValue
+                    tempSection.type = json[i]["V_SOC_SECTION"][j]["TYPE"].stringValue
+                    tempSection.beginTime = json[i]["V_SOC_SECTION"][j]["BEGIN_TIME"].stringValue
+                    tempSection.endTime = json[i]["V_SOC_SECTION"][j]["END_TIME"].stringValue
+                    tempSection.day = json[i]["V_SOC_SECTION"][j]["DAY"].stringValue
+                    tempSection.numRegistered = json[i]["V_SOC_SECTION"][j]["REGISTERED"].doubleValue
+                    tempSection.numSeats = json[i]["V_SOC_SECTION"][j]["SEATS"].doubleValue
+                    tempSection.instructor = json[i]["V_SOC_SECTION"][j]["INSTRUCTOR"].stringValue
+                    tempSection.location = json[i]["V_SOC_SECTION"][j]["LOCATION"].stringValue
+                    tempSection.addDate = json[i]["V_SOC_SECTION"][j]["ADD_DATE"].stringValue
+                    tempSection.cancelDate = json[i]["V_SOC_SECTION"][j]["CANCEL_DATE"].stringValue
+                    tempSection.publishFlag = json[i]["V_SOC_SECTION"][j]["PUBLISH_FLAG"].stringValue
+                    if (arc4random_uniform(10) < 5) {
+                        
+                        tempSection.inCourseBin = 0
+                        
+                    }
+                    
+                    else { tempSection.inCourseBin = 1}
                     
                 }
                 
@@ -173,31 +182,70 @@ class localStorage {
     
     class func getCurrentSections() -> [section]{ //returns array of sections currently enrolled in 
         
-        /*
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
         
-        var cs104lec = section(termCode: "term code", courseID: 1234, sisCourseID: "CS 104", name: "Data Structures and stuff", section: "2777R", session: "Srping 2015", units: 10, type: "Lecture", beginTime: "10 AM", endTime: "11 AM" , day: "MWF", numRegistered: 12, numSeats: 50, instructor: "Mark Redekopp", location: "ZHS 252" , addDate: "na", cancelDate: "na", PublishFlag: "y")
+        println(context)
         
+        
+        let fetchRequest = NSFetchRequest(entityName: "Section")
+        let sortDescriptor = NSSortDescriptor (key: "inCourseBin", ascending: true)
+        let predicate = NSPredicate(format: "inCourseBin == 1")
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = predicate
+        
+        var toReturn: [section] = []
+        
+        
+        var error: NSError?
+        
+        if let fetchResults = context!.executeFetchRequest(fetchRequest, error: &error) as [Section]? {
+          
+            if (fetchResults.count != 0) {
+                
+                for i in 0 ... (fetchResults.count - 1)  {
+                    
+                    var tempSection = section(courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, name: fetchResults[i].name, section: fetchResults[i].section, session: fetchResults[i].session, units: fetchResults[i].units, type: fetchResults[i].type, beginTime: fetchResults[i].beginTime, endTime: fetchResults[i].endTime, day: fetchResults[i].day, numRegistered: fetchResults[i].numRegistered, numSeats: fetchResults[i].numSeats, instructor: fetchResults[i].instructor, location: fetchResults[i].location, addDate: fetchResults[i].addDate, cancelDate: fetchResults[i].cancelDate, PublishFlag: fetchResults[i].publishFlag)
+                    
+                    println("appended")
+                    toReturn.append(tempSection)
+        
+                }
+                
+            }
+                
+        }
     
-        var cs104dis = section(termCode: "term code", courseID: 1234, sisCourseID: "CS 104", name: "Data Structures and stuff", section: "2772R", session: "Srping 2015", units: 10, type: "Lab", beginTime: "10 AM", endTime: "11 AM" , day: "TTh", numRegistered: 12, numSeats: 50, instructor: "na", location: "SAL 126" , addDate: "na", cancelDate: "na", PublishFlag: "y")*/
-        
-        
-        
-     
-        
-        return []
+    
+        return toReturn
         
     
     }
     
-    class func getSchoolList () -> [School] {
+    class func getSchoolList () -> [school] {
         
-        /*
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
         
-        var Viterbi = school(schoolCode: "ENGR", schoolDescription: "Viterbi School of Engineering", departments: [])
-        var Marshall = school(schoolCode: "BUAD", schoolDescription: "Marshall School of Business", departments: [])
+        let fetchRequest = NSFetchRequest (entityName: "School")
         
-            */
-        return []
+        var toReturn : [school] = []
+        
+        if let fetchResult = context!.executeFetchRequest(fetchRequest, error: nil) as [School]? {
+            
+            if (fetchResult.count != 0) {
+                
+                for i in 0 ... (fetchResult.count - 1)  {
+            
+            toReturn.append(school(schoolCode: fetchResult[i].schoolCode, schoolDescription: fetchResult[i].schoolDescription))
+                    
+                }
+                
+            }
+            
+        }
+        
+        return toReturn
     }
     
     class func getDeptBySchool (schoolname: String) -> [department] {
@@ -238,15 +286,8 @@ class localStorage {
         
         if (coursename == "CS 104") {
             
-            
-            var cs104lec = section(termCode: "term code", courseID: 1234, sisCourseID: "CS 104", name: "Data Structures and stuff", section: "2777R", session: "Srping 2015", units: 10, type: "Lecture", beginTime: "10 AM", endTime: "11 AM" , day: "MWF", numRegistered: 12, numSeats: 50, instructor: "Mark Redekopp", location: "ZHS 252" , addDate: "na", cancelDate: "na", PublishFlag: "y")
-            
-            
-            var cs104dis = section(termCode: "term code", courseID: 1234, sisCourseID: "CS 104", name: "Data Structures and stuff", section: "2772R", session: "Srping 2015", units: 10, type: "Lab", beginTime: "10 AM", endTime: "11 AM" , day: "TTh", numRegistered: 12, numSeats: 50, instructor: "na", location: "SAL 126" , addDate: "na", cancelDate: "na", PublishFlag: "y")
-            
-            
-            
-            return [cs104lec, cs104dis]
+    
+            return []
 
             
         }
