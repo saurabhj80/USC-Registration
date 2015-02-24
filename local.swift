@@ -40,6 +40,7 @@ struct section {
 }
 
 struct course {
+    
     var courseID: Double
     var sisCourseID: String //the name of the course. Ex. "CS 103"
     var title: String //Ex. Introduction to Programming
@@ -49,7 +50,6 @@ struct course {
     var description: String //course description
     var divFlag: String //"Y" indicates that diversity requirement is fulfilled
     var effecTerm: String //Semester that the course belongs to
-    var sectionList: [section] //array of all sections belonging to this class
 }
 
 struct department {
@@ -64,37 +64,90 @@ struct school {
     
     var schoolCode: String
     var schoolDescription: String
-    var departments: [department]
     
     
 }
 
+
+
 class localStorage {
     
+    struct storage {
+        var currentSections: [section] = []
+    }
     
-    class func getAPIdata () {}
+    
+    class func getAPIdata () {
+
+     let session = NSURLSession.sharedSession()
+        
+       var request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Schools/")!)
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            
+            var err: NSError?
+            
+            //var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            
+            var json = JSON(data: data)
+            
+           // var schoolDict = json[0] as NSDictionary
+            
+            for i in 0 ... json.arrayValue.count {
+            
+                
+            var schoolname = json[i]["SOC_SCHOOL_DESCRIPTION"].stringValue
+                
+                
+            self.dataArray.append(newschool)
+    
+            }
+            
+            /*
+            
+            if let resultArray = json.arrayvalue {
+                
+                var schools = (Schools)[]
+                
+                
+                
+            self.dataArray = jsonResult
+            
+           // println(NSString(data: data, encoding: NSUTF8StringEncoding)) */
+            
+        })
+        
+    
+    
+    }
     
     class func getCurrentSections() -> [section]{ //returns array of sections currently enrolled in 
+        
+        /*
         
         var cs104lec = section(termCode: "term code", courseID: 1234, sisCourseID: "CS 104", name: "Data Structures and stuff", section: "2777R", session: "Srping 2015", units: 10, type: "Lecture", beginTime: "10 AM", endTime: "11 AM" , day: "MWF", numRegistered: 12, numSeats: 50, instructor: "Mark Redekopp", location: "ZHS 252" , addDate: "na", cancelDate: "na", PublishFlag: "y")
         
     
-        var cs104dis = section(termCode: "term code", courseID: 1234, sisCourseID: "CS 104", name: "Data Structures and stuff", section: "2772R", session: "Srping 2015", units: 10, type: "Lab", beginTime: "10 AM", endTime: "11 AM" , day: "TTh", numRegistered: 12, numSeats: 50, instructor: "na", location: "SAL 126" , addDate: "na", cancelDate: "na", PublishFlag: "y")
+        var cs104dis = section(termCode: "term code", courseID: 1234, sisCourseID: "CS 104", name: "Data Structures and stuff", section: "2772R", session: "Srping 2015", units: 10, type: "Lab", beginTime: "10 AM", endTime: "11 AM" , day: "TTh", numRegistered: 12, numSeats: 50, instructor: "na", location: "SAL 126" , addDate: "na", cancelDate: "na", PublishFlag: "y")*/
+        
+        
         
      
         
-        return [cs104lec, cs104dis]
+        return []
         
     
     }
     
     class func getSchoolList () -> [school] {
         
+        /*
+        
         var Viterbi = school(schoolCode: "ENGR", schoolDescription: "Viterbi School of Engineering", departments: [])
         var Marshall = school(schoolCode: "BUAD", schoolDescription: "Marshall School of Business", departments: [])
         
-        return [Marshall, Viterbi]
-        
+            */
+        return []
     }
     
     class func getDeptBySchool (schoolname: String) -> [department] {
@@ -115,6 +168,7 @@ class localStorage {
     }
     
     class func getCourseByDept (deptname: String) -> [course] {
+        /*
         
         if (deptname == "CSCI"){
             var cs103 = course (courseID: 12345, sisCourseID: "CS 103", title: "Introduction to Programming", minUnits: 0, maxUnits: 10, totalMax: 10, description: "Learn About Programming", divFlag: "Y", effecTerm: "spring 2015", sectionList: [])
@@ -122,14 +176,14 @@ class localStorage {
             
            var cs104 = course (courseID: 1234, sisCourseID: "CS 104", title: "Introduction to Data Structures", minUnits: 0, maxUnits: 10, totalMax: 10, description: "Learn About Data Structures", divFlag: "Y", effecTerm: "spring 2015", sectionList: [])
             
-            return [cs103, cs104]
-        }
+            return [cs103, cs104]*/
         
-        else {return []}
+        
+        return []
         
     }
     
-    class func getSectionsByCourse (coursename: String) -> [section] {
+     class func getSectionsByCourse (coursename: String) -> [section] {
         
         
         if (coursename == "CS 104") {
