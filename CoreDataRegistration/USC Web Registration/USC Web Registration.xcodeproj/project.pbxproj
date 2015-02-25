@@ -17,6 +17,12 @@
 		7C794C141A99927F00FBC428 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C131A99927F00FBC428 /* School.swift */; };
 		7C794C1A1A99928000FBC428 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C191A99928000FBC428 /* Department.swift */; };
 		7CA869811A99F5B100067D0C /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA869801A99F5B100067D0C /* Section.swift */; };
+		FFA700F71A9E8CBE009930B8 /* CourseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F31A9E8CBE009930B8 /* CourseDetailsViewController.swift */; };
+		FFA700F81A9E8CBE009930B8 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */; };
+		FFA700F91A9E8CBE009930B8 /* DeptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */; };
+		FFA700FA1A9E8CBE009930B8 /* SchoolTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */; };
+		FFA700FC1A9E8E61009930B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFA700FB1A9E8E61009930B8 /* Main.storyboard */; };
+		FFA700FD1A9E8EE9009930B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFA700FB1A9E8E61009930B8 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,11 @@
 		7C794C131A99927F00FBC428 /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		7C794C191A99928000FBC428 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
 		7CA869801A99F5B100067D0C /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Section.swift; path = "USC Web Registration/Section.swift"; sourceTree = "<group>"; };
+		FFA700F31A9E8CBE009930B8 /* CourseDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseDetailsViewController.swift; path = ../CourseDetailsViewController.swift; sourceTree = "<group>"; };
+		FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseTableViewController.swift; path = ../CourseTableViewController.swift; sourceTree = "<group>"; };
+		FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeptTableViewController.swift; path = ../DeptTableViewController.swift; sourceTree = "<group>"; };
+		FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolTableViewController.swift; path = ../SchoolTableViewController.swift; sourceTree = "<group>"; };
+		FFA700FB1A9E8E61009930B8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "USC Web RegistrationTests/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +100,13 @@
 		7C794BDF1A996ACA00FBC428 /* USC Web Registration */ = {
 			isa = PBXGroup;
 			children = (
+				FFA700F31A9E8CBE009930B8 /* CourseDetailsViewController.swift */,
+				FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */,
+				FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */,
+				FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */,
 				7C794BE21A996ACA00FBC428 /* AppDelegate.swift */,
 				7C794C051A996B5600FBC428 /* local.swift */,
+				FFA700FB1A9E8E61009930B8 /* Main.storyboard */,
 				7C794C061A996B5600FBC428 /* SwiftyJSON.swift */,
 				7C794BEC1A996ACA00FBC428 /* Images.xcassets */,
 				7C794BE41A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld */,
@@ -205,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C794BED1A996ACA00FBC428 /* Images.xcassets in Resources */,
+				FFA700FD1A9E8EE9009930B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA700FC1A9E8E61009930B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,12 +240,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA700F81A9E8CBE009930B8 /* CourseTableViewController.swift in Sources */,
 				7C0AD7951A9C1C9B00171EAE /* Course.swift in Sources */,
 				7CA869811A99F5B100067D0C /* Section.swift in Sources */,
 				7C794C1A1A99928000FBC428 /* Department.swift in Sources */,
+				FFA700F71A9E8CBE009930B8 /* CourseDetailsViewController.swift in Sources */,
 				7C794C141A99927F00FBC428 /* School.swift in Sources */,
 				7C794C071A996B5600FBC428 /* local.swift in Sources */,
+				FFA700F91A9E8CBE009930B8 /* DeptTableViewController.swift in Sources */,
 				7C794BE31A996ACA00FBC428 /* AppDelegate.swift in Sources */,
+				FFA700FA1A9E8CBE009930B8 /* SchoolTableViewController.swift in Sources */,
 				7C794C081A996B5600FBC428 /* SwiftyJSON.swift in Sources */,
 				7C794BE61A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld in Sources */,
 			);
