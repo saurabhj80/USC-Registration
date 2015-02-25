@@ -77,19 +77,24 @@ class localStorage {
     
     class func getAPIdata () {
         
+
+        
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
         
         println(context)
         
-        var request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Schools/ALL")!)
+        let url =  NSURL(string : "http://petri.esd.usc.edu/socAPI/Schools/ALL")
         
-        var task = NSURLSession.sharedSession().dataTaskWithRequest(request,
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!,
             
             completionHandler: { (data, response, error) -> Void in
             
             var err: NSError?
             var json = JSON(data: data)
+            let x = json.arrayValue.count
+            println("Number of Schools")
+                println(x)
             
             for i in 0 ... json.arrayValue.count {
             
@@ -97,13 +102,17 @@ class localStorage {
                 
                 tempSchool.schoolDescription = json[i]["SOC_SCHOOL_DESCRIPTION"].stringValue
                 tempSchool.schoolCode = json[i]["SOC_SCHOOL_CODE"].stringValue
+                context?.save(nil)
                 
+                let x = json[i]["SOC_DEPARTMENT_CODE"].arrayValue.count
+                println("Number of Departments ", x )
                 for j in 0 ... json[i]["SOC_DEPARTMENT_CODE"].arrayValue.count {
                     
                         let tempDept = NSEntityDescription.insertNewObjectForEntityForName("Department", inManagedObjectContext: context!) as Department
                         tempDept.departmentCode = json[i]["SOC_DEPARTMENT_CODE"][j]["SOC_DEPARTMENT_CODE"].stringValue
                         tempDept.departmentDescription = json[i]["SOC_DEPARTMENT_CODE"][j]["SOC_DEPARTMENT_DESCRIPTION"].stringValue
                         tempDept.schoolCode = json[i]["SOC_DEPARTMENT_CODE"][j]["SOC_SCHOOL_CODE"].stringValue
+                        context?.save(nil)
                     
                 }
                 
@@ -115,9 +124,9 @@ class localStorage {
         
         task.resume()
     
-        request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Courses/20151/ALL")!)
+       let  request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Courses/20151/ALL")!)
         
-        task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) ->
+        let task2 = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) ->
             Void in
             
             var err: NSError?
@@ -128,7 +137,10 @@ class localStorage {
                 let tempCourse = NSEntityDescription.insertNewObjectForEntityForName("Course", inManagedObjectContext: context!) as Course
                 
                 tempCourse.courseID = json[i]["COURSE_ID"].doubleValue
-                tempCourse.sisCourseID = json[i]["SIS_COURSE_ID"].stringValue
+                
+                var courseID = json[i]["SIS_COURSE_ID"].stringValue
+                tempCourse.sisCourseID = courseID
+                tempCourse.deparmentCode = courseID.substringWithRange(Range<String.Index>(start: courseID.startIndex, end: advance(courseID.startIndex, 4)))
                 tempCourse.title = json[i]["TITLE"].stringValue
                 tempCourse.minUnits = json[i]["MIN_UNITS"].doubleValue
                 tempCourse.maxUnits = json[i]["MAX_UNITS"].doubleValue
@@ -137,7 +149,8 @@ class localStorage {
                 tempCourse.divFlag = json[i]["DIVERSITY_FLAG"].stringValue
                 tempCourse.effecTerm = json[i]["EFFECTIVE_TERM_CODE"].stringValue
                 
-                println(json[i]["V_SOC_SECTION"].arrayValue.count)
+                context?.save(nil)
+                
                 for j in 0 ... json[i]["V_SOC_SECTION"].arrayValue.count {
                     
                 
@@ -161,6 +174,9 @@ class localStorage {
                     tempSection.addDate = json[i]["V_SOC_SECTION"][j]["ADD_DATE"].stringValue
                     tempSection.cancelDate = json[i]["V_SOC_SECTION"][j]["CANCEL_DATE"].stringValue
                     tempSection.publishFlag = json[i]["V_SOC_SECTION"][j]["PUBLISH_FLAG"].stringValue
+                    
+                    context?.save(nil)
+                    
                     if (arc4random_uniform(10) < 5) {
                         
                         tempSection.inCourseBin = 0
@@ -174,10 +190,14 @@ class localStorage {
                 
             }
             println("fetched all courses and sections")
+            
+            
         })
         
-        task.resume()
+        task2.resume()
         
+
+
     }
     
     class func getCurrentSections() -> [section]{ //returns array of sections currently enrolled in 
@@ -189,13 +209,10 @@ class localStorage {
         
         
         let fetchRequest = NSFetchRequest(entityName: "Section")
-        let sortDescriptor = NSSortDescriptor (key: "inCourseBin", ascending: true)
         let predicate = NSPredicate(format: "inCourseBin == 1")
-        fetchRequest.sortDescriptors = [sortDescriptor]
         fetchRequest.predicate = predicate
         
         var toReturn: [section] = []
-        
         
         var error: NSError?
         
@@ -203,23 +220,29 @@ class localStorage {
           
             if (fetchResults.count != 0) {
                 
+                println("count %d",fetchResults.count)
                 for i in 0 ... (fetchResults.count - 1)  {
+                  
                     
                     var tempSection = section(courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, name: fetchResults[i].name, section: fetchResults[i].section, session: fetchResults[i].session, units: fetchResults[i].units, type: fetchResults[i].type, beginTime: fetchResults[i].beginTime, endTime: fetchResults[i].endTime, day: fetchResults[i].day, numRegistered: fetchResults[i].numRegistered, numSeats: fetchResults[i].numSeats, instructor: fetchResults[i].instructor, location: fetchResults[i].location, addDate: fetchResults[i].addDate, cancelDate: fetchResults[i].cancelDate, PublishFlag: fetchResults[i].publishFlag)
                     
-                    println("appended")
                     toReturn.append(tempSection)
+                    
+                    
+                    println("appended")
+                  
         
                 }
                 
             }
+            
+            else { println("nope")}
                 
         }
     
     
         return toReturn
         
-    
     }
     
     class func getSchoolList () -> [school] {
@@ -248,64 +271,133 @@ class localStorage {
         return toReturn
     }
     
-    class func getDeptBySchool (schoolname: String) -> [department] {
+    class func getDeptBySchool (schoolcode: String) -> [department] {
         
         
-        if (schoolname == "Viterbi"){
-      
-            var compsci = department (departmentCode: "CSCI", departmentDescription: "Computer Science", schoolCode: "ENGR")
-           
-            var meche = department(departmentCode: "MECH", departmentDescription: "Mechanical Engineering", schoolCode: "ENGR")
+        var toReturn : [department] = []
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest (entityName: "Department")
+        let mypredicate = NSPredicate(format: "School == @#", schoolcode)
+        
+        fetchRequest.predicate = mypredicate
+        
+        if let fetchResults = context!.executeFetchRequest(fetchRequest, error: nil)  as [Department]? {
             
-            return [compsci, meche]
+            if (fetchResults.count != 0) {
+                
+                for i in 0 ... (fetchResults.count - 1){
+                    
+                    toReturn.append(department(departmentCode: fetchResults[i].departmentCode, departmentDescription: fetchResults[i].departmentDescription, schoolCode: fetchResults[i].schoolCode))
+                
+                }
+            
+            }
             
         }
         
-        else {return []}
-        
+        return toReturn
     }
     
-    class func getCourseByDept (deptname: String) -> [course] {
-        /*
+    class func getCourseByDept (deptCode: String) -> [course] {
+       
+        var toReturn : [course] = []
         
-        if (deptname == "CSCI"){
-            var cs103 = course (courseID: 12345, sisCourseID: "CS 103", title: "Introduction to Programming", minUnits: 0, maxUnits: 10, totalMax: 10, description: "Learn About Programming", divFlag: "Y", effecTerm: "spring 2015", sectionList: [])
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Course")
+        
+        let myPredicate = NSPredicate (format: "departmentCode == @#", deptCode)
+        
+        if let fetchResults = context!.executeFetchRequest(fetchRequest, error: nil) as [Course]?{
          
+            if (fetchResults.count != 0) {
+                
+                for i in 0 ... (fetchResults.count - 1){
+                    
+                    toReturn.append(course(courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, title: fetchResults[i].title, minUnits: fetchResults[i].minUnits, maxUnits: fetchResults[i].maxUnits, totalMax: fetchResults[i].totalMax, description: fetchResults[i].description, divFlag: fetchResults[i].divFlag, effecTerm: fetchResults[i].effecTerm))
+                }
+                
+            }
             
-           var cs104 = course (courseID: 1234, sisCourseID: "CS 104", title: "Introduction to Data Structures", minUnits: 0, maxUnits: 10, totalMax: 10, description: "Learn About Data Structures", divFlag: "Y", effecTerm: "spring 2015", sectionList: [])
-            
-            return [cs103, cs104]*/
+        }
         
-        
-        return []
+        return toReturn
         
     }
     
      class func getSectionsByCourse (coursename: String) -> [section] {
         
+        var toReturn : [section] = []
         
-        if (coursename == "CS 104") {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Section")
+        
+        let myPredicate = NSPredicate (format: "sisCourseID == @#", coursename)
+        
+        if let fetchResults = context!.executeFetchRequest(fetchRequest, error: nil) as [Section]?{
             
-    
-            return []
-
+            if (fetchResults.count != 0) {
+                
+                for i in 0 ... (fetchResults.count - 1){
+                    
+                    toReturn.append(section(courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, name: fetchResults[i].name, section: fetchResults[i].section, session: fetchResults[i].session, units: fetchResults[i].units, type: fetchResults[i].type, beginTime: fetchResults[i].beginTime, endTime: fetchResults[i].endTime, day: fetchResults[i].day, numRegistered: fetchResults[i].numRegistered, numSeats: fetchResults[i].numSeats, instructor: fetchResults[i].instructor, location: fetchResults[i].location, addDate: fetchResults[i].addDate, cancelDate: fetchResults[i].cancelDate, PublishFlag: fetchResults[i].publishFlag))
+                    
+                }
+                
+            }
             
         }
         
-        else {return []}
+        return toReturn
+     
         
     }
     
-    class func addSectiontoCourseBin (toAdd: Double){ //pass the course ID
+    class func addSectiontoCourseBin (toAdd: String){ //pass the section name
         
-        //TODO
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Section")
+        
+        let myPredicate = NSPredicate (format: "section == @#", toAdd)
+        fetchRequest.predicate = myPredicate
+        
+        if let fetchResults  = context?.executeFetchRequest(fetchRequest, error: nil) as [Section]? {
+            
+            var tempSection = fetchResults[0]
+            tempSection.setValue(1, forKey: "inCourseBin")
+            context?.save(nil)
+            
+        }
         
         
     }
     
-    class func removeSectionFromCourseBin (toRemove: Double) { //pass the course ID
+    class func removeSectionFromCourseBin (toRemove: String) { //pass the course ID
     
-    //TODO
-    
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let myPredicate = NSPredicate (format: "section == @#", toRemove)
+        
+        let fetchRequest = NSFetchRequest(entityName: "Section")
+        fetchRequest.predicate = myPredicate
+        
+        if let fetchResults  = context?.executeFetchRequest(fetchRequest, error: nil) as [Section]? {
+            
+            var tempSection = fetchResults[0]
+            tempSection.setValue(0, forKey: "inCourseBin")
+            context?.save(nil)
+            
+        }
+        
+        
     }
 }

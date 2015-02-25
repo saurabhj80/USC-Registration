@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0AD7951A9C1C9B00171EAE /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0AD7941A9C1C9B00171EAE /* Course.swift */; };
 		7C794BE31A996ACA00FBC428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BE21A996ACA00FBC428 /* AppDelegate.swift */; };
 		7C794BE61A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BE41A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld */; };
 		7C794BE81A996ACA00FBC428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BE71A996ACA00FBC428 /* ViewController.swift */; };
@@ -17,7 +18,6 @@
 		7C794C071A996B5600FBC428 /* local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C051A996B5600FBC428 /* local.swift */; };
 		7C794C081A996B5600FBC428 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C061A996B5600FBC428 /* SwiftyJSON.swift */; };
 		7C794C141A99927F00FBC428 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C131A99927F00FBC428 /* School.swift */; };
-		7C794C181A99928000FBC428 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C171A99928000FBC428 /* Course.swift */; };
 		7C794C1A1A99928000FBC428 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C191A99928000FBC428 /* Department.swift */; };
 		7CA869811A99F5B100067D0C /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA869801A99F5B100067D0C /* Section.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C0AD7941A9C1C9B00171EAE /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = "USC Web Registration/Course.swift"; sourceTree = "<group>"; };
 		7C794BDD1A996ACA00FBC428 /* USC Web Registration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "USC Web Registration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C794BE11A996ACA00FBC428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C794BE21A996ACA00FBC428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		7C794C051A996B5600FBC428 /* local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = local.swift; sourceTree = "<group>"; };
 		7C794C061A996B5600FBC428 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		7C794C131A99927F00FBC428 /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
-		7C794C171A99928000FBC428 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		7C794C191A99928000FBC428 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
 		7CA869801A99F5B100067D0C /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Section.swift; path = "USC Web Registration/Section.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,9 +74,9 @@
 			isa = PBXGroup;
 			children = (
 				7C794C191A99928000FBC428 /* Department.swift */,
-				7C794C171A99928000FBC428 /* Course.swift */,
 				7C794C131A99927F00FBC428 /* School.swift */,
 				7CA869801A99F5B100067D0C /* Section.swift */,
+				7C0AD7941A9C1C9B00171EAE /* Course.swift */,
 				7C794BDF1A996ACA00FBC428 /* USC Web Registration */,
 				7C794BF81A996ACA00FBC428 /* USC Web RegistrationTests */,
 				7C794BDE1A996ACA00FBC428 /* Products */,
@@ -233,8 +233,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0AD7951A9C1C9B00171EAE /* Course.swift in Sources */,
 				7CA869811A99F5B100067D0C /* Section.swift in Sources */,
-				7C794C181A99928000FBC428 /* Course.swift in Sources */,
 				7C794BE81A996ACA00FBC428 /* ViewController.swift in Sources */,
 				7C794C1A1A99928000FBC428 /* Department.swift in Sources */,
 				7C794C141A99927F00FBC428 /* School.swift in Sources */,

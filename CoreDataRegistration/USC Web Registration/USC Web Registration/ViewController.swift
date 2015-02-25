@@ -11,6 +11,11 @@ import CoreData
 
 class ViewController: UIViewController {
 
+    @IBAction func fetchBtn(sender: AnyObject) {
+        
+        localStorage.getAPIdata()
+        
+    }
     @IBAction func uiButton(sender: AnyObject) {
         
         var courseBin = localStorage.getCurrentSections()
@@ -24,7 +29,7 @@ class ViewController: UIViewController {
         let context = self
         super.viewDidLoad()
         
-      //  localStorage.getAPIdata()
+      //localStorage.getAPIdata()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
