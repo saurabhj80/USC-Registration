@@ -19,9 +19,7 @@ class CourseTableViewController: UITableViewController {
         
         courseList = localStorage.getCourseByDept(departmentCode!)
         self.title = departmentName
-        
-        //println(courseList)
-        
+                
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
 
