@@ -44,8 +44,20 @@ class SchoolTableViewController: UITableViewController {
         var schoolName = schoolArray[indexPath.row].schoolDescription
         
         cell.textLabel?.text = schoolName
+        
+        // Customizing the Appearance of the cell
+        cell.textLabel?.numberOfLines = 0;
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.font = UIFont(name: "GillSans-Light", size: 18.0)
+        
         println("fetching cells")
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 50
+        
     }
     
     // MARK: - Navigation

@@ -21,6 +21,8 @@ class CourseTableViewController: UITableViewController {
         self.title = departmentName
         
         //println(courseList)
+        
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,8 +52,20 @@ class CourseTableViewController: UITableViewController {
         cell.textLabel?.text = courseList[indexPath.row].sisCourseID + ": " + courseList[indexPath.row].title
 
         // Configure the cell...
-
+        // Customizing the Appearance of the cell
+        cell.textLabel?.numberOfLines = 0;
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.font = UIFont(name: "GillSans-Light", size: 18.0)
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        return self.tableView.rowHeight
+        
     }
     
     // MARK: - Navigation

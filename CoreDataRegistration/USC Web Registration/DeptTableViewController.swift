@@ -19,7 +19,7 @@ class DeptTableViewController: UITableViewController {
     
         deptArray = localStorage.getDeptBySchool(schoolcode!)
         self.title = schoolname!
-
+                
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,20 +29,17 @@ class DeptTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
+
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
+
         return deptArray.count
     }
 
@@ -54,7 +51,20 @@ class DeptTableViewController: UITableViewController {
         cell.textLabel?.text = deptName
         // Configure the cell...
 
+        // Customizing the Appearance of the cell
+        cell.textLabel?.numberOfLines = 0;
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.font = UIFont(name: "GillSans-Light", size: 18.0)
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        return self.tableView.rowHeight
+        
     }
     
     // MARK: - Navigation
