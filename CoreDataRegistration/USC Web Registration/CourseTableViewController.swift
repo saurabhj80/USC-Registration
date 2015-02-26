@@ -17,6 +17,7 @@ class CourseTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println(departmentCode)
         courseList = localStorage.getCourseByDept(departmentCode!)
         self.title = departmentName
         

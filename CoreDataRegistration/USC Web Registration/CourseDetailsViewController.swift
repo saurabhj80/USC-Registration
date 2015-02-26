@@ -14,7 +14,6 @@ class CourseDetailsViewController: UIViewController {
     
     @IBOutlet weak var courseTitle: UILabel!
     
-    
     @IBOutlet weak var mainTextLabel: UILabel!
     
     @IBOutlet weak var segControlOut: UISegmentedControl!

@@ -8,10 +8,23 @@
 
 import UIKit
 
+protocol SchoolTableViewControllerDelegate {
+ 
+    func reloadTable(controller: SchoolTableViewController,  dataArray: [school])
+    
+}
+
 class SchoolTableViewController: UITableViewController {
         
-    var schoolArray = [school]()
+    var schoolArray : [school] = []
+    var delegate:SchoolTableViewControllerDelegate?  = nil
     
+
+    @IBAction func loadBtn(sender: AnyObject) {
+        
+        println(schoolArray.count)
+
+    }
     //var testArray = [String]()
 
     override func viewDidLoad() {
@@ -21,7 +34,10 @@ class SchoolTableViewController: UITableViewController {
         //testArray.append("blah")
         //testArray.append("dadm")
         
-        schoolArray = localStorage.getSchoolList()
+        schoolArray = []
+        self.delegate = localStorage()
+        delegate?.reloadTable(self, dataArray: schoolArray)
+        println(schoolArray.count)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -52,12 +68,12 @@ class SchoolTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("schoolCell", forIndexPath: indexPath) as UITableViewCell
-        
+        println("fetching cells", indexPath.row)
+
         // Configure the cell...
         var schoolName = schoolArray[indexPath.row].schoolDescription
-        
         cell.textLabel?.text = schoolName
-        println("fetching cells")
+        println("fetching cells", indexPath.row)
         return cell
     }
     

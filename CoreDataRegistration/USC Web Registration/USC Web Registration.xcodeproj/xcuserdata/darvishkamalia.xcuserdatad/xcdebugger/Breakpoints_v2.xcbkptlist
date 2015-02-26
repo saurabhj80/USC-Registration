@@ -10,57 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "USC Web Registration/local.swift"
-            timestampString = "446434689.041878"
+            timestampString = "446623676.867279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "getAPIdata()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "USC_Web_Registration.localStorage.(getAPIdata (USC_Web_Registration.localStorage.Type) -&gt; () -&gt; ()).(closure #1)"
-                  moduleName = "USC Web Registration"
-                  urlString = "file:///Users/darvishkamalia/Desktop/USC-Registration/CoreDataRegistration/USC%20Web%20Registration/USC%20Web%20Registration/local.swift"
-                  timestampString = "446267284.986657"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "2908">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "USC_Web_Registration.localStorage.(getAPIdata (USC_Web_Registration.localStorage.Type) -&gt; () -&gt; ()).(closure #1)"
-                  moduleName = "USC Web Registration"
-                  urlString = "file:///Users/darvishkamalia/Desktop/USC-Registration/CoreDataRegistration/USC%20Web%20Registration/USC%20Web%20Registration/local.swift"
-                  timestampString = "446267285.031408"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "2956">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "USC Web Registration/local.swift"
-            timestampString = "446434689.041878"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "getAPIdata()"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "USC Web Registration/local.swift"
-            timestampString = "446439253.430865"
+            timestampString = "446623676.867279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "getCurrentSections()"
-            landmarkType = "5">
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "localStorage"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

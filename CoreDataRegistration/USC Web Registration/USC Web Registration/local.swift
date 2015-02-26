@@ -73,58 +73,80 @@ struct school {
     
 }
 
-class localStorage {
+class localStorage : SchoolTableViewControllerDelegate {
     
-    class func getAPIdata () {
-        
-
+    func  reloadTable(controller: SchoolTableViewController, dataArray: [school]) {
         
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
-        
-        println(context)
         
         let url =  NSURL(string : "http://petri.esd.usc.edu/socAPI/Schools/ALL")
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!,
             
             completionHandler: { (data, response, error) -> Void in
-            
-            var err: NSError?
-            var json = JSON(data: data)
-            let x = json.arrayValue.count
-            println("Number of Schools")
+                
+                var err: NSError?
+                var json = JSON(data: data)
+                let x = json.arrayValue.count
+                println("Number of Schools")
                 println(x)
-            
-            for i in 0 ... json.arrayValue.count {
-            
-               let tempSchool = NSEntityDescription.insertNewObjectForEntityForName("School", inManagedObjectContext: context!) as School
                 
-                tempSchool.schoolDescription = json[i]["SOC_SCHOOL_DESCRIPTION"].stringValue
-                tempSchool.schoolCode = json[i]["SOC_SCHOOL_CODE"].stringValue
-                context?.save(nil)
                 
-                let x = json[i]["SOC_DEPARTMENT_CODE"].arrayValue.count
-                println("Number of Departments ", x )
-                for j in 0 ... json[i]["SOC_DEPARTMENT_CODE"].arrayValue.count {
+                var tempArray :[school] = []
+                for i in 0 ... json.arrayValue.count {
                     
+                    /*
+                    let tempSchool = NSEntityDescription.insertNewObjectForEntityForName("School", inManagedObjectContext: context!) as School
+                    
+                    tempSchool.schoolDescription = json[i]["SOC_SCHOOL_DESCRIPTION"].stringValue
+                    tempSchool.schoolCode = json[i]["SOC_SCHOOL_CODE"].stringValue
+                    context?.save(nil)
+                    println("added", &tempSchool.schoolCode)
+                    println(i)
+                    let x = json[i]["SOC_DEPARTMENT_CODE"].arrayValue.count
+                    //println("Number of Departments ", x )
+                    for j in 0 ... json[i]["SOC_DEPARTMENT_CODE"].arrayValue.count {
+                        
                         let tempDept = NSEntityDescription.insertNewObjectForEntityForName("Department", inManagedObjectContext: context!) as Department
                         tempDept.departmentCode = json[i]["SOC_DEPARTMENT_CODE"][j]["SOC_DEPARTMENT_CODE"].stringValue
                         tempDept.departmentDescription = json[i]["SOC_DEPARTMENT_CODE"][j]["SOC_DEPARTMENT_DESCRIPTION"].stringValue
                         tempDept.schoolCode = json[i]["SOC_DEPARTMENT_CODE"][j]["SOC_SCHOOL_CODE"].stringValue
                         context?.save(nil)
+                        
+                    }*/
+                    
+                    let temp = school (schoolCode: json[i]["SOC_SCHOOL_CODE"].stringValue, schoolDescription: json[i]["SOC_SCHOOL_DESCRIPTION"].stringValue)
+                    
+                    tempArray.append(temp)
                     
                 }
                 
-            }
+                println("calling closure")
+                controller.schoolArray = tempArray
                 
-        println("fetched all schools")
+                dispatch_async(dispatch_get_main_queue()) {
+                    controller.tableView.reloadData()
+                }
+                
+                println(dataArray.count)
+                println("fetched all schools")
                 
         })
         
         task.resume()
+
+    }
     
-        /*
+    class func getAPIdata () {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        println(context)
+        
+        
+        
        let  request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Courses/20151/ALL")!)
         
         let task2 = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) ->
@@ -141,7 +163,18 @@ class localStorage {
                 
                 var courseID = json[i]["SIS_COURSE_ID"].stringValue
                 tempCourse.sisCourseID = courseID
-                tempCourse.deparmentCode = courseID.substringWithRange(Range<String.Index>(start: courseID.startIndex, end: advance(courseID.startIndex, 4)))
+                                
+                var temp :String = String(courseID[advance(courseID.startIndex, 0)])
+                var i = 1
+                while (String(courseID[advance(courseID.startIndex, i)]) != "-") {
+                    
+                    temp.append(courseID[advance(courseID.startIndex, i)])
+                    i = i + 1
+                    
+                }
+                
+                tempCourse.deparmentCode = temp
+                
                 tempCourse.title = json[i]["TITLE"].stringValue
                 tempCourse.minUnits = json[i]["MIN_UNITS"].doubleValue
                 tempCourse.maxUnits = json[i]["MAX_UNITS"].doubleValue
@@ -197,7 +230,7 @@ class localStorage {
         
         task2.resume()
         
-    */
+    
 
     }
     
@@ -256,9 +289,9 @@ class localStorage {
         var toReturn : [school] = []
         
         if let fetchResult = context!.executeFetchRequest(fetchRequest, error: nil) as [School]? {
-            
+            println("HERE", fetchResult.count)
             if (fetchResult.count != 0) {
-                
+                println(fetchResult.count)
                 for i in 0 ... (fetchResult.count - 1)  {
             
             toReturn.append(school(schoolCode: fetchResult[i].schoolCode, schoolDescription: fetchResult[i].schoolDescription))
@@ -311,7 +344,7 @@ class localStorage {
         
         let fetchRequest = NSFetchRequest(entityName: "Course")
         
-        let myPredicate = NSPredicate (format: "departmentCode == %@", deptCode)
+        let myPredicate = NSPredicate (format: "deparmentCode == %@", deptCode)
         
         if let fetchResults = context!.executeFetchRequest(fetchRequest, error: nil) as [Course]?{
          
