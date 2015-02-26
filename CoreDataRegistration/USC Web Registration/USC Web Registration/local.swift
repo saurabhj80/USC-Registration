@@ -124,6 +124,7 @@ class localStorage {
         
         task.resume()
     
+        /*
        let  request =  NSURLRequest(URL: NSURL(string : "http://petri.esd.usc.edu/socAPI/Courses/20151/ALL")!)
         
         let task2 = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) ->
@@ -196,7 +197,7 @@ class localStorage {
         
         task2.resume()
         
-
+    */
 
     }
     
@@ -280,7 +281,7 @@ class localStorage {
         let context = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest (entityName: "Department")
-        let mypredicate = NSPredicate(format: "School == @#", schoolcode)
+        let mypredicate = NSPredicate(format: "School == %@", schoolcode)
         
         fetchRequest.predicate = mypredicate
         
