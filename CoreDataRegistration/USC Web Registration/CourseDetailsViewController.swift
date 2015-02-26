@@ -10,15 +10,14 @@ import UIKit
 
 class CourseDetailsViewController: UIViewController {
     
-  var currentCourse : course?
+    var currentCourse : course?
     
+    // IBOutlets
     @IBOutlet weak var courseTitle: UILabel!
-    
-    
     @IBOutlet weak var mainTextLabel: UILabel!
-    
     @IBOutlet weak var segControlOut: UISegmentedControl!
-    
+
+    // IBAction
     @IBAction func segmentControlChange(sender: AnyObject) {
         
         switch segControlOut.selectedSegmentIndex
@@ -75,7 +74,7 @@ class CourseDetailsViewController: UIViewController {
         self.title  = currentCourse?.sisCourseID
         courseTitle?.text = currentCourse!.title
         
-                
+        // Segmented Control
         segControlOut.selectedSegmentIndex = 0
         
         var courseString = currentCourse?.description
@@ -85,27 +84,11 @@ class CourseDetailsViewController: UIViewController {
         mainTextLabel?.attributedText = justifiedDescription
         
         }
-       
-     
-
-        // Do any additional setup after loading the view.
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

@@ -78,7 +78,6 @@ class localStorage {
     class func getAPIdata () {
         
 
-        
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
         
@@ -316,7 +315,7 @@ class localStorage {
         if let fetchResults = context!.executeFetchRequest(fetchRequest, error: nil) as [Course]?{
          
             if (fetchResults.count != 0) {
-                
+                println(fetchResults)
                 for i in 0 ... (fetchResults.count - 1){
                     
                     toReturn.append(course(courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, title: fetchResults[i].title, minUnits: fetchResults[i].minUnits, maxUnits: fetchResults[i].maxUnits, totalMax: fetchResults[i].totalMax, description: fetchResults[i].description, divFlag: fetchResults[i].divFlag, effecTerm: fetchResults[i].effecTerm))
@@ -325,7 +324,6 @@ class localStorage {
             }
             
         }
-        
         return toReturn
         
     }
