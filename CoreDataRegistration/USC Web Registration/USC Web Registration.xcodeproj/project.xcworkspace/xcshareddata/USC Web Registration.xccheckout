@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>418A8F37-1C60-4B92-BB53-986FFB3B8029</string>
+	<string>A92B2C92-AA8D-4058-B03C-743CCE378012</string>
 	<key>IDESourceControlProjectName</key>
 	<string>USC Web Registration</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -18,7 +18,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B03624B6792ABD9D3D5FE735A5E1A93185F07492</key>
-		<string>../../../..</string>
+		<string>../../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/saurabhj80/USC-Registration.git</string>
@@ -34,7 +34,15 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>B03624B6792ABD9D3D5FE735A5E1A93185F07492</string>
 			<key>IDESourceControlWCCName</key>
-			<string>USC-Registration</string>
+			<string>..</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B03624B6792ABD9D3D5FE735A5E1A93185F07492</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NEW%20</string>
 		</dict>
 	</array>
 </dict>

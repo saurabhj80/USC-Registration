@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1FB34B8A1A9EB71100DF18A2 /* CourseBinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB34B881A9EB71100DF18A2 /* CourseBinTableViewController.swift */; };
-		1FB34B8B1A9EB71100DF18A2 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB34B891A9EB71100DF18A2 /* DetailsViewController.swift */; };
-		1FB34B8D1A9EB72700DF18A2 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB34B8C1A9EB72700DF18A2 /* EventKit.framework */; };
-		1FB34B8F1A9EB72A00DF18A2 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB34B8E1A9EB72A00DF18A2 /* EventKitUI.framework */; };
 		7C0AD7951A9C1C9B00171EAE /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0AD7941A9C1C9B00171EAE /* Course.swift */; };
 		7C794BE31A996ACA00FBC428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BE21A996ACA00FBC428 /* AppDelegate.swift */; };
 		7C794BE61A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BE41A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld */; };
+		7C794BE81A996ACA00FBC428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BE71A996ACA00FBC428 /* ViewController.swift */; };
+		7C794BEB1A996ACA00FBC428 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C794BE91A996ACA00FBC428 /* Main.storyboard */; };
 		7C794BED1A996ACA00FBC428 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C794BEC1A996ACA00FBC428 /* Images.xcassets */; };
 		7C794BF01A996ACA00FBC428 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C794BEE1A996ACA00FBC428 /* LaunchScreen.xib */; };
 		7C794BFC1A996ACA00FBC428 /* USC_Web_RegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BFB1A996ACA00FBC428 /* USC_Web_RegistrationTests.swift */; };
@@ -26,6 +24,8 @@
 		FFA700F81A9E8CBE009930B8 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */; };
 		FFA700F91A9E8CBE009930B8 /* DeptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */; };
 		FFA700FA1A9E8CBE009930B8 /* SchoolTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */; };
+		FFA700FC1A9E8E61009930B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFA700FB1A9E8E61009930B8 /* Main.storyboard */; };
+		FFA700FD1A9E8EE9009930B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFA700FB1A9E8E61009930B8 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,15 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1FB34B881A9EB71100DF18A2 /* CourseBinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseBinTableViewController.swift; sourceTree = "<group>"; };
-		1FB34B891A9EB71100DF18A2 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		1FB34B8C1A9EB72700DF18A2 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
-		1FB34B8E1A9EB72A00DF18A2 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		7C0AD7941A9C1C9B00171EAE /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = "USC Web Registration/Course.swift"; sourceTree = "<group>"; };
 		7C794BDD1A996ACA00FBC428 /* USC Web Registration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "USC Web Registration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C794BE11A996ACA00FBC428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C794BE21A996ACA00FBC428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C794BE51A996ACA00FBC428 /* USC_Web_Registration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = USC_Web_Registration.xcdatamodel; sourceTree = "<group>"; };
+		7C794BE71A996ACA00FBC428 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7C794BEA1A996ACA00FBC428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C794BEC1A996ACA00FBC428 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7C794BEF1A996ACA00FBC428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7C794BF51A996ACA00FBC428 /* USC Web RegistrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "USC Web RegistrationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +60,7 @@
 		FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseTableViewController.swift; path = ../CourseTableViewController.swift; sourceTree = "<group>"; };
 		FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeptTableViewController.swift; path = ../DeptTableViewController.swift; sourceTree = "<group>"; };
 		FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolTableViewController.swift; path = ../SchoolTableViewController.swift; sourceTree = "<group>"; };
+		FFA700FB1A9E8E61009930B8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "USC Web RegistrationTests/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FB34B8F1A9EB72A00DF18A2 /* EventKitUI.framework in Frameworks */,
-				1FB34B8D1A9EB72700DF18A2 /* EventKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,8 +84,6 @@
 		7C794BD41A996ACA00FBC428 = {
 			isa = PBXGroup;
 			children = (
-				1FB34B8E1A9EB72A00DF18A2 /* EventKitUI.framework */,
-				1FB34B8C1A9EB72700DF18A2 /* EventKit.framework */,
 				7C794C191A99928000FBC428 /* Department.swift */,
 				7C794C131A99927F00FBC428 /* School.swift */,
 				7CA869801A99F5B100067D0C /* Section.swift */,
@@ -111,13 +106,16 @@
 		7C794BDF1A996ACA00FBC428 /* USC Web Registration */ = {
 			isa = PBXGroup;
 			children = (
-				7C794BE21A996ACA00FBC428 /* AppDelegate.swift */,
 				FFA700F31A9E8CBE009930B8 /* CourseDetailsViewController.swift */,
 				FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */,
 				FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */,
 				FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */,
+				7C794BE21A996ACA00FBC428 /* AppDelegate.swift */,
+				7C794BE71A996ACA00FBC428 /* ViewController.swift */,
 				7C794C051A996B5600FBC428 /* local.swift */,
+				FFA700FB1A9E8E61009930B8 /* Main.storyboard */,
 				7C794C061A996B5600FBC428 /* SwiftyJSON.swift */,
+				7C794BE91A996ACA00FBC428 /* Main.storyboard */,
 				7C794BEC1A996ACA00FBC428 /* Images.xcassets */,
 				7C794BEE1A996ACA00FBC428 /* LaunchScreen.xib */,
 				7C794BE41A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld */,
@@ -231,8 +229,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C794BEB1A996ACA00FBC428 /* Main.storyboard in Resources */,
 				7C794BF01A996ACA00FBC428 /* LaunchScreen.xib in Resources */,
 				7C794BED1A996ACA00FBC428 /* Images.xcassets in Resources */,
+				FFA700FD1A9E8EE9009930B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA700FC1A9E8E61009930B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,17 +254,16 @@
 				FFA700F81A9E8CBE009930B8 /* CourseTableViewController.swift in Sources */,
 				7C0AD7951A9C1C9B00171EAE /* Course.swift in Sources */,
 				7CA869811A99F5B100067D0C /* Section.swift in Sources */,
+				7C794BE81A996ACA00FBC428 /* ViewController.swift in Sources */,
 				7C794C1A1A99928000FBC428 /* Department.swift in Sources */,
 				FFA700F71A9E8CBE009930B8 /* CourseDetailsViewController.swift in Sources */,
 				7C794C141A99927F00FBC428 /* School.swift in Sources */,
 				7C794C071A996B5600FBC428 /* local.swift in Sources */,
-				1FB34B8A1A9EB71100DF18A2 /* CourseBinTableViewController.swift in Sources */,
 				FFA700F91A9E8CBE009930B8 /* DeptTableViewController.swift in Sources */,
 				7C794BE31A996ACA00FBC428 /* AppDelegate.swift in Sources */,
 				FFA700FA1A9E8CBE009930B8 /* SchoolTableViewController.swift in Sources */,
 				7C794C081A996B5600FBC428 /* SwiftyJSON.swift in Sources */,
 				7C794BE61A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld in Sources */,
-				1FB34B8B1A9EB71100DF18A2 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +286,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7C794BE91A996ACA00FBC428 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C794BEA1A996ACA00FBC428 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		7C794BEE1A996ACA00FBC428 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
