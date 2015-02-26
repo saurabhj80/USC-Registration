@@ -17,7 +17,7 @@ class DeptTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        deptArray = localStorage.getDeptBySchool(schoolname!)
+        deptArray = localStorage.getDeptBySchool(schoolcode!)
         self.title = schoolname!
 
         // Uncomment the following line to preserve selection between presentations

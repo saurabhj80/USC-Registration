@@ -281,7 +281,7 @@ class localStorage {
         let context = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest (entityName: "Department")
-        let mypredicate = NSPredicate(format: "School == %@", schoolcode)
+        let mypredicate = NSPredicate(format: "schoolCode == %@", schoolcode)
         
         fetchRequest.predicate = mypredicate
         
@@ -311,7 +311,7 @@ class localStorage {
         
         let fetchRequest = NSFetchRequest(entityName: "Course")
         
-        let myPredicate = NSPredicate (format: "departmentCode == @#", deptCode)
+        let myPredicate = NSPredicate (format: "departmentCode == %@", deptCode)
         
         if let fetchResults = context!.executeFetchRequest(fetchRequest, error: nil) as [Course]?{
          
