@@ -112,6 +112,8 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
             
             for sections in controller.allSections
             {
+                println("type")
+                println(sections.type)
                 
                 if sections.type == "Lecture"{
                     controller.lectures.append(sections)
