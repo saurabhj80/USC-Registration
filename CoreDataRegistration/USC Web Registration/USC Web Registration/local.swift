@@ -90,7 +90,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                 var json = JSON(data: data)
                 var tempArray: [course] = []
                 
-                for i in 0 ... json.arrayValue.count {
+                for i in 0 ... (json.arrayValue.count - 1){
                     
                     println(json[i]["SIS_COURSE_ID"].stringValue)
                     var tempCourse = course (departmentCode: controller.departmentCode!, courseID: json[i]["COURSE_ID"].doubleValue, sisCourseID: json[i]["SIS_COURSE_ID"].stringValue, title: json[i]["TITLE"].stringValue, minUnits: json[i]["MIN_UNITS"].doubleValue, maxUnits: json[i]["MAX_UNITS"].doubleValue, totalMax: json[i]["TOTAL_MAX_UNITS"].doubleValue, description: json[i]["DESCRIPTION"].stringValue, divFlag: json[i]["DIVERSITY_FLAG"].stringValue, effecTerm: json[i]["EFFECTIVE_TERM_CODE"].stringValue)
@@ -173,7 +173,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                 let x = json.arrayValue.count
             
                 var tempArray :[school] = []
-                for i in 0 ... json.arrayValue.count {
+                for i in 0 ... (json.arrayValue.count - 1) {
                     
                     let temp = school (schoolCode: json[i]["SOC_SCHOOL_CODE"].stringValue, schoolDescription: json[i]["SOC_SCHOOL_DESCRIPTION"].stringValue)
                     
