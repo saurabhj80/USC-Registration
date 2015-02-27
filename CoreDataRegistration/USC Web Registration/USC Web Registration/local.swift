@@ -103,6 +103,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                 
                 controller.courseList = tempArray
                 dispatch_async(dispatch_get_main_queue()) {
+                    controller.stopActivity()
                     controller.tableView.reloadData()
                 }
 

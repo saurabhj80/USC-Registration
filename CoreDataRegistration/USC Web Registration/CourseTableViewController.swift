@@ -20,29 +20,44 @@ class CourseTableViewController: UITableViewController {
     var departmentName : String?
     var courseList = [course]()
     var delegate: CourseTableViewControllerDelegate? = nil
+    
+    var activity:UIActivityIndicatorView = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        courseList = localStorage.getCourseByDept(departmentCode!)
-        self.title = departmentName
-                
+    
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        courseList = []
+        // Setting Up the Activity Indicator
+        activity.frame = CGRectMake(CGRectGetMidX(self.tableView.bounds) - 22,CGRectGetMidY(self.tableView.bounds) - 22, 44.0, 44.0)
+        activity.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        self.view.addSubview(activity)
+        
         delegate = localStorage()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        self.displayActivity()
+        
+        courseList = []
         delegate?.reloadCourseTable(self)
-        self.title = departmentName 
+        self.title = departmentName
         
         localStorage.addSectiontoCourseBin("6780")
         
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+    }
+    
+    func displayActivity()
+    {
+        activity.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+    }
+    
+    func stopActivity()
+    {
+        activity.stopAnimating()
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
     }
 
     override func didReceiveMemoryWarning() {
