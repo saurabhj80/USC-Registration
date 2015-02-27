@@ -61,7 +61,7 @@ class DetailsViewController: UIViewController, EKEventEditViewDelegate {
     func createEvent()
     {
         var formatter:NSDateFormatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd hh a";
+        formatter.dateFormat = "yyyy-MM-dd hh:mm";
         formatter.locale = NSLocale.currentLocale()
         
         var date = NSDate()
@@ -69,14 +69,17 @@ class DetailsViewController: UIViewController, EKEventEditViewDelegate {
         var month = NSCalendar.currentCalendar().component(NSCalendarUnit.MonthCalendarUnit, fromDate: date)
         var day = NSCalendar.currentCalendar().component(NSCalendarUnit.DayCalendarUnit, fromDate: date)
         
-        var begin = arr[6] as? String
-        var end = arr[7] as? String
+        var begin:String! = arr[6] as? String
+        var end:String! = arr[7] as? String
         
-        begin = "\(year)-" + "\(month)-" + "\(day)" + " " + begin!
-        end = "\(year)-" + "\(month)-" + "\(day)" + " " + end!
+        begin = "\(year)-" + "\(month)-" + "\(day)" + " " + begin
+        end   = "\(year)-" + "\(month)-" + "\(day)" + " " + end
         
-        var startdate:NSDate = formatter.dateFromString(begin!)!
-        var endDate:NSDate   = formatter.dateFromString(end!)!
+        var startdate:NSDate! = formatter.dateFromString(begin)
+        var endDate:NSDate!   = formatter.dateFromString(end)
+        
+        println(startdate)
+        println(endDate)
         
         var event = EKEvent(eventStore: eventStore)
         event.startDate = startdate

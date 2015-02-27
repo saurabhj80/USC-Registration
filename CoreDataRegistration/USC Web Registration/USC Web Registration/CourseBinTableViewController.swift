@@ -28,6 +28,8 @@ class CourseBinTableViewController: UITableViewController  {
         
         arr = localStorage.getCurrentSections()
         
+        println(arr)
+        
         self.tableView.reloadData()
     }
     
