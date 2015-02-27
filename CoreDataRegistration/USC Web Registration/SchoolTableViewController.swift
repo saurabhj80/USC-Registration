@@ -62,10 +62,17 @@ class SchoolTableViewController: UITableViewController {
         var schoolName = schoolArray[indexPath.row].schoolDescription
         
         cell.textLabel?.text = schoolName
-        println("fetching cells")
+        cell.textLabel?.font = UIFont(name: "GillSans-Light", size: 18)
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
+        //println("fetching cells")
         return cell
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 50;
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
