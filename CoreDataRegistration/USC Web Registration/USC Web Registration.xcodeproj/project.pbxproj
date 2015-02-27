@@ -19,6 +19,8 @@
 		7C794C081A996B5600FBC428 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C061A996B5600FBC428 /* SwiftyJSON.swift */; };
 		7C794C141A99927F00FBC428 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C131A99927F00FBC428 /* School.swift */; };
 		7C794C1A1A99928000FBC428 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C191A99928000FBC428 /* Department.swift */; };
+		7CA4780F1AA0135700A3F531 /* CourseBinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4780E1AA0135700A3F531 /* CourseBinTableViewController.swift */; };
+		7CA478111AA013CD00A3F531 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA478101AA013CD00A3F531 /* DetailsViewController.swift */; };
 		7CA869811A99F5B100067D0C /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA869801A99F5B100067D0C /* Section.swift */; };
 		FFA700F71A9E8CBE009930B8 /* CourseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F31A9E8CBE009930B8 /* CourseDetailsViewController.swift */; };
 		FFA700F81A9E8CBE009930B8 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */; };
@@ -55,6 +57,8 @@
 		7C794C061A996B5600FBC428 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		7C794C131A99927F00FBC428 /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		7C794C191A99928000FBC428 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
+		7CA4780E1AA0135700A3F531 /* CourseBinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseBinTableViewController.swift; sourceTree = "<group>"; };
+		7CA478101AA013CD00A3F531 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		7CA869801A99F5B100067D0C /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Section.swift; path = "USC Web Registration/Section.swift"; sourceTree = "<group>"; };
 		FFA700F31A9E8CBE009930B8 /* CourseDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseDetailsViewController.swift; path = ../CourseDetailsViewController.swift; sourceTree = "<group>"; };
 		FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseTableViewController.swift; path = ../CourseTableViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 		7C794BDF1A996ACA00FBC428 /* USC Web Registration */ = {
 			isa = PBXGroup;
 			children = (
+				7CA478101AA013CD00A3F531 /* DetailsViewController.swift */,
+				7CA4780E1AA0135700A3F531 /* CourseBinTableViewController.swift */,
 				FFA700F31A9E8CBE009930B8 /* CourseDetailsViewController.swift */,
 				FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */,
 				FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */,
@@ -259,11 +265,13 @@
 				FFA700F71A9E8CBE009930B8 /* CourseDetailsViewController.swift in Sources */,
 				7C794C141A99927F00FBC428 /* School.swift in Sources */,
 				7C794C071A996B5600FBC428 /* local.swift in Sources */,
+				7CA4780F1AA0135700A3F531 /* CourseBinTableViewController.swift in Sources */,
 				FFA700F91A9E8CBE009930B8 /* DeptTableViewController.swift in Sources */,
 				7C794BE31A996ACA00FBC428 /* AppDelegate.swift in Sources */,
 				FFA700FA1A9E8CBE009930B8 /* SchoolTableViewController.swift in Sources */,
 				7C794C081A996B5600FBC428 /* SwiftyJSON.swift in Sources */,
 				7C794BE61A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld in Sources */,
+				7CA478111AA013CD00A3F531 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
