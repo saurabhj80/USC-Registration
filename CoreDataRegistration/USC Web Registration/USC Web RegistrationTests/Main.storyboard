@@ -123,7 +123,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="k5Z-eT-oQm">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="JbZ-lS-9sE" kind="show" id="wkj-u7-p0i"/>
+                                <segue destination="JbZ-lS-9sE" kind="show" id="fLN-P0-unS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -529,7 +529,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8J-4z-STe">
-                                <rect key="frame" x="16" y="74" width="574" height="20.5"/>
+                                <rect key="frame" x="16" y="74" width="574" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -551,7 +551,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipr-3b-AhM">
-                                <rect key="frame" x="16" y="165" width="568" height="20.5"/>
+                                <rect key="frame" x="16" y="165" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

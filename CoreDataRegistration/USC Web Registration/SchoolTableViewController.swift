@@ -28,6 +28,8 @@ class SchoolTableViewController: UITableViewController {
         delegate = localStorage()
         delegate?.reloadSchoolTable(self, dataArray: schoolArray)
         
+        //localStorage.getAPIdata()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,6 +37,13 @@ class SchoolTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        schoolArray = []
+        delegate = localStorage()
+        delegate?.reloadSchoolTable(self, dataArray: schoolArray)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -2,12 +2,13 @@
 //  Section.swift
 //  USC Web Registration
 //
-//  Created by Darvish Kamalia on 2/22/15.
+//  Created by Darvish Kamalia on 2/27/15.
 //  Copyright (c) 2015 Darvish Kamalia. All rights reserved.
 //
 
 import Foundation
 import CoreData
+
 @objc(Section)
 
 class Section: NSManagedObject {
@@ -31,5 +32,6 @@ class Section: NSManagedObject {
     @NSManaged var termCode: String
     @NSManaged var type: String
     @NSManaged var units: Double
+    @NSManaged var sectonID: Double
 
 }

@@ -61,14 +61,22 @@ class DisLecLabTableViewController: UITableViewController {
     
     @IBAction func Add(sender: AnyObject) {
         
+        
         for sections in selectedSections{
-            localStorage.addSectiontoCourseBin(sections.section)
+            println("VIEWCONTROLLER")
+            println (sections.sectionID)
+            localStorage.addSectiontoCourseBin(sections.sectionID)
         }
         
+        var timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: Selector("someSelector"), userInfo: nil, repeats: false)
+    }
+    
+    func someSelector() {
+        // Something after a delay
+        println("Pop")
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -158,8 +166,6 @@ class DisLecLabTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         
         var cell = tableView.cellForRowAtIndexPath(indexPath)
-        
-              
         
         if cell?.accessoryType == UITableViewCellAccessoryType.None
         {

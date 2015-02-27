@@ -8,13 +8,22 @@
 
 import UIKit
 
+protocol CourseBinTableViewControllerDelegate {
+ 
+    func reloadCourses (controller: CourseBinTableViewController)
+    
+}
+
 
 class CourseBinTableViewController: UITableViewController  {
     
     var arr:[section] = [];
+    var delegate:CourseBinTableViewControllerDelegate? = nil
     
     var activity:UIActivityIndicatorView = UIActivityIndicatorView()
 
+    var v1:UILabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +43,20 @@ class CourseBinTableViewController: UITableViewController  {
         // Navigation Bar Appearance
         self.navigationItem.titleView = v
         
+        
+        v1 = UILabel(frame: CGRectMake(CGRectGetMidX(self.tableView.bounds) - self.tableView.bounds.size.width/2, CGRectGetMidY(self.tableView.bounds) - 100, self.tableView.bounds.size.width, 100))
+        v1.text = "No Courses in the bin."
+        v1.font = UIFont(name: "GillSans-Light", size: 22.0);
+        v1.numberOfLines = 0;
+        v1.textAlignment = NSTextAlignment.Center
+        self.tableView.addSubview(v1)
+        v1.hidden = true
         // Get the sections cuurently enrolled in
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        println("RELDJFLKAJSLKF AKFJ ASKJF LKASJF LKASJFLK JA")
         self.refresh()
     }
     
@@ -43,25 +65,17 @@ class CourseBinTableViewController: UITableViewController  {
         activity.startAnimating()
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
-        arr = localStorage.getCurrentSections()
-        self.tableView.reloadData()
+        //arr = localStorage.getCurrentSections()
         
-        var v:UILabel = UILabel(frame: CGRectMake(CGRectGetMidX(self.tableView.bounds) - self.tableView.bounds.size.width/2, CGRectGetMidY(self.tableView.bounds) - 100, self.tableView.bounds.size.width, 100))
+        arr = []
+        delegate = localStorage()
+        delegate?.reloadCourses(self)
         
         if arr.count == 0 {
-            
-            v.text = "No Courses in the bin."
-            v.font = UIFont(name: "GillSans-Light", size: 22.0);
-            v.numberOfLines = 0;
-            v.textAlignment = NSTextAlignment.Center
-            self.tableView.addSubview(v)
-            
+           v1.hidden = false
         } else {
-            
-            if (v.superview != nil)
-            {
-                v.removeFromSuperview()
-            }
+            println("Hiding")
+            v1.hidden = true
         }
         
         activity.stopAnimating()

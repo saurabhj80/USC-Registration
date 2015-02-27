@@ -44,7 +44,7 @@ class CourseTableViewController: UITableViewController {
         delegate?.reloadCourseTable(self)
         self.title = departmentName
         
-        localStorage.addSectiontoCourseBin("6780")
+        //localStorage.addSectiontoCourseBin("6780")
         
     }
     

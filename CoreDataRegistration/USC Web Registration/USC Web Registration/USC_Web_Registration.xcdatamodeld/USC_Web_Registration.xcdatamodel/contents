@@ -36,6 +36,7 @@
         <attribute name="numSeats" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="publishFlag" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sectonID" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="session" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sisCourseID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="termCode" optional="YES" attributeType="String" syncable="YES"/>
@@ -46,6 +47,6 @@
         <element name="Course" positionX="-54" positionY="9" width="128" height="195"/>
         <element name="Department" positionX="-36" positionY="18" width="128" height="88"/>
         <element name="School" positionX="-63" positionY="-18" width="128" height="73"/>
-        <element name="Section" positionX="-18" positionY="27" width="128" height="330"/>
+        <element name="Section" positionX="-18" positionY="27" width="128" height="345"/>
     </elements>
 </model>

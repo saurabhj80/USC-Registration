@@ -23,17 +23,19 @@ class DeptTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        deptArray = []
-        self.title = schoolname!
-        delegate = localStorage()
-        delegate?.reloadDeptTable(self, dataArray: deptArray)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        deptArray = []
+        self.title = schoolname!
+        delegate = localStorage()
+        delegate?.reloadDeptTable(self, dataArray: deptArray)
     }
 
     override func didReceiveMemoryWarning() {
