@@ -133,7 +133,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                     
                     var tempArray :[department] = []
                     
-                    for i in 0 ... json[0]["SOC_DEPARTMENT_CODE"].arrayValue.count {
+                    for i in 0 ... (json[0]["SOC_DEPARTMENT_CODE"].arrayValue.count - 1) {
                         
                         println(json[0]["SOC_DEPARTMENT_CODE"][i]["SOC_DEPARTMENT_CODE"].stringValue)
                         
