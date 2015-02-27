@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol DisLecLabTableViewControllerDelegate {
+ 
+    func reloadDisLecLabTable(controller: DisLecLabTableViewController)
+    
+}
+
 class DisLecLabTableViewController: UITableViewController {
     
     
@@ -17,36 +23,35 @@ class DisLecLabTableViewController: UITableViewController {
     var quiz = [section]()
     var labs = [section]()
     var selectedSections = [section]()
+    var allSections = [section]()
+    var delegate: DisLecLabTableViewControllerDelegate? = nil
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var allSections = [section]()
-        allSections = localStorage.getSectionsByCourse(courseSections!.sisCourseID)
-        
-        for sections in allSections
-        {
-            if sections.type == "Lecture"{
-                lectures.append(sections)
-            
-            }
-            else if sections.type == "Lab"{
-                labs.append(sections)
-            }
-            else if sections.type == "Discussion"{
-                discussion.append(sections)
-            }
-            else{
-                quiz.append(sections)
-            }
-        }
-
+       // var allSections = [section]()
+        //allSections = localStorage.getSectionsByCourse(courseSections!.sisCourseID)
+       
+        tableView.reloadData()
+     
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        delegate = localStorage()
+        delegate?.reloadDisLecLabTable(self)
+        tableView.reloadData()
+        println(allSections.count)
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,7 +107,9 @@ class DisLecLabTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DisLecCell", forIndexPath: indexPath) as UITableViewCell
         
-       
+       println("here")
+ 
+        println(lectures.count)
 
         if indexPath.section == 0 {
             cell.textLabel?.text = "Lecture Section: " + lectures[indexPath.row].section

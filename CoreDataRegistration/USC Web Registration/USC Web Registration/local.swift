@@ -74,7 +74,67 @@ struct school {
     
 }
 
-class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerDelegate, CourseTableViewControllerDelegate {
+class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerDelegate, CourseTableViewControllerDelegate, DisLecLabTableViewControllerDelegate {
+    
+    func reloadDisLecLabTable(controller: DisLecLabTableViewController) {
+        
+        let courseString = String (format: "%.0f", controller.courseSections!.courseID)
+        let urlString = "http://petri.esd.usc.edu/socAPI/Courses/20151/" + courseString
+        
+        let url =  NSURL(string: urlString)
+        
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: config)
+        
+        let task = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) -> Void in
+            
+            
+            var json = JSON(data: data)
+            var tempArray = [section]()
+            
+            for j in 0 ... (json["V_SOC_SECTION"].arrayValue.count - 1){
+                
+                
+            let tempSection = section (courseID: json["COURSE_ID"].doubleValue, sisCourseID: json["SIS_COURSE_ID"].stringValue, name: json ["V_SOC_SECTION"][j]["NAME"].stringValue, section: json["V_SOC_SECTION"][j]["SECTION"].stringValue, session: json["V_SOC_SECTION"][j]["SESSION"].stringValue, units: json["V_SOC_SECTION"][j]["UNIT_CODE"].doubleValue, type: json["V_SOC_SECTION"][j]["TYPE"].stringValue, beginTime: json["V_SOC_SECTION"][j]["BEGIN_TIME"].stringValue, endTime: json["V_SOC_SECTION"][j]["END_TIME"].stringValue, day: json["V_SOC_SECTION"][j]["DAY"].stringValue, numRegistered: json["V_SOC_SECTION"][j]["REGISTERED"].doubleValue, numSeats: json["V_SOC_SECTION"][j]["SEATS"].doubleValue, instructor: json["V_SOC_SECTION"][j]["INSTRUCTOR"].stringValue, location: json["V_SOC_SECTION"][j]["LOCATION"].stringValue, addDate: json["V_SOC_SECTION"][j]["ADD_DATE"].stringValue, cancelDate: json["V_SOC_SECTION"][j]["CANCEL_DATE"].stringValue, PublishFlag: json["V_SOC_SECTION"][j]["PUBLISH_FLAG"].stringValue)
+        
+            
+            tempArray.append(tempSection)
+                
+            }
+            
+            controller.allSections = tempArray
+            println("done")
+            
+            
+            for sections in controller.allSections
+            {
+                
+                if sections.type == "Lecture"{
+                    controller.lectures.append(sections)
+                    
+                }
+                else if sections.type == "Lab"{
+                    controller.labs.append(sections)
+                }
+                else if sections.type == "Discussion"{
+                    controller.discussion.append(sections)
+                }
+                else{
+                    controller.quiz.append(sections)
+                }
+            }
+            
+           
+            dispatch_async(dispatch_get_main_queue()) {
+                controller.tableView.reloadData()
+            }
+        
+            
+            })
+        
+        task.resume()
+        
+    }
     
     func reloadCourseTable(controller: CourseTableViewController) {
         let url =  NSURL(string : "http://petri.esd.usc.edu/socAPI/Courses/20151/" + controller.departmentCode!)
@@ -254,13 +314,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                     
                     context?.save(nil)
                     
-                    if (arc4random_uniform(10) < 5) {
-                        
-                        tempSection.inCourseBin = 0
-                        
-                    }
-                        
-                    else { tempSection.inCourseBin = 1}
+    
                     
                 }
                 
@@ -438,6 +492,8 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
     
     class func addSectiontoCourseBin (toAdd: String){ //pass the section ID
         
+        println(toAdd)
+        
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
         
@@ -473,9 +529,11 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
             tempSection.addDate = json[0]["ADD_DATE"].stringValue
             tempSection.cancelDate = json[0]["CANCEL_DATE"].stringValue
             tempSection.publishFlag = json[0]["PUBLISH_FLAG"].stringValue
+            tempSection.inCourseBin = 1
             
             context?.save(nil)
             
+            println("added")
             println(tempSection.name)
             
             })
