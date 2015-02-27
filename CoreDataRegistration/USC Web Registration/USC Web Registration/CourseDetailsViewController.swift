@@ -14,6 +14,9 @@ class CourseDetailsViewController: UIViewController {
     
     @IBOutlet weak var courseTitle: UILabel!
     
+    @IBOutlet weak var Units: UILabel!
+    
+    @IBOutlet weak var diversity: UILabel!
     
     @IBOutlet weak var mainTextLabel: UILabel!
     
@@ -84,10 +87,24 @@ class CourseDetailsViewController: UIViewController {
         var justifiedDescription = NSAttributedString(string: courseString!, attributes: [NSParagraphStyleAttributeName:styledParagraph, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
         mainTextLabel?.attributedText = justifiedDescription
         
+        
+        
+        
+       let unitsString = "\(currentCourse!.maxUnits)"
+        
+        Units.text = "Units: " + unitsString
+        
+        if currentCourse?.divFlag == "Y"
+        {
+            diversity.text = "Diversity Requirement Satisfied"
+        }
+        else
+        {
+            diversity.text = "Diversity Requirement Not Satisfied"
         }
        
      
-
+    }
         // Do any additional setup after loading the view.
     
 
@@ -97,15 +114,23 @@ class CourseDetailsViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        var sections = segue.destinationViewController as DisLecLabTableViewController
+        
         // Get the new view controller using segue.destinationViewController.
+        
+        
         // Pass the selected object to the new view controller.
+        
+        sections.courseSections = currentCourse
+        
     }
-    */
+    
 
 }
 

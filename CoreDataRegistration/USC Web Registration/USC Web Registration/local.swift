@@ -415,7 +415,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
         
         let fetchRequest = NSFetchRequest(entityName: "Section")
         
-        let myPredicate = NSPredicate (format: "sisCourseID == @#", coursename)
+        let myPredicate = NSPredicate (format: "sisCourseID == %@", coursename)
         
         if let fetchResults = context!.executeFetchRequest(fetchRequest, error: nil) as [Section]?{
             
@@ -492,7 +492,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
         
-        let myPredicate = NSPredicate (format: "section == @#", toRemove)
+        let myPredicate = NSPredicate (format: "section == %@", toRemove)
         
         let fetchRequest = NSFetchRequest(entityName: "Section")
         fetchRequest.predicate = myPredicate
