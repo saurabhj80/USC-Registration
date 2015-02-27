@@ -71,7 +71,8 @@ class CourseTableViewController: UITableViewController {
         cell.textLabel?.text = courseList[indexPath.row].sisCourseID + ": " + courseList[indexPath.row].title
 
         // Configure the cell...
-
+        cell.textLabel?.font = UIFont(name: "GillSans-Light", size: 18)
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
         return cell
     }
     

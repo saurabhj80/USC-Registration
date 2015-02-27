@@ -71,7 +71,7 @@ class DetailsViewController: UIViewController, EKEventEditViewDelegate {
         
         var begin:String! = arr[6] as? String
         var end:String! = arr[7] as? String
-                
+        
         begin = "\(year)-" + "\(month)-" + "\(day)" + " " + begin
         end   = "\(year)-" + "\(month)-" + "\(day)" + " " + end
         

@@ -62,7 +62,8 @@ class DeptTableViewController: UITableViewController {
         var deptName = deptArray[indexPath.row].departmentDescription
         cell.textLabel?.text = deptName
         // Configure the cell...
-
+        cell.textLabel?.font = UIFont(name: "GillSans-Light", size: 18)
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
         return cell
     }
     
