@@ -11,7 +11,7 @@ import EventKit
 import EventKitUI
 
 class DetailsViewController: UIViewController, EKEventEditViewDelegate {
-
+    
     // IBOutlets
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var ins: UILabel!
@@ -28,7 +28,7 @@ class DetailsViewController: UIViewController, EKEventEditViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -49,13 +49,13 @@ class DetailsViewController: UIViewController, EKEventEditViewDelegate {
         }
         
     }
-
+    
     @IBAction func addToCalender(sender: UIButton)
     {
         // Call Helper Method
         self.createEvent()
     }
-
+    
     // Helper method
     
     func createEvent()
