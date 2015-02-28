@@ -66,7 +66,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4B-A1-1tg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4570.5" y="357"/>
+            <point key="canvasLocation" x="3826" y="370"/>
         </scene>
         <!--Course Table View Controller-->
         <scene sceneID="XU0-Vq-jfS">
@@ -95,7 +95,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2c-e6-Xho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5322" y="361"/>
+            <point key="canvasLocation" x="4662" y="370"/>
         </scene>
         <!--Course Bin Table View Controller-->
         <scene sceneID="cL5-rF-Kx4">
@@ -528,9 +528,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8J-4z-STe">
-                                <rect key="frame" x="16" y="74" width="574" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="u8J-4z-STe">
+                                <rect key="frame" x="16" y="74" width="574" height="47"/>
+                                <fontDescription key="fontDescription" name="GillSans-Italic" family="Gill Sans" pointSize="41"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" misplaced="YES">
@@ -538,10 +538,11 @@
                                 </variation>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Cjp-vB-4Bn">
-                                <rect key="frame" x="16" y="114" width="568" height="29"/>
+                                <rect key="frame" x="16" y="139" width="568" height="29"/>
                                 <segments>
-                                    <segment title="Course Description"/>
+                                    <segment title="Description"/>
                                     <segment title="Rating"/>
+                                    <segment title="Syllabus"/>
                                 </segments>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="16" y="114" width="368" height="29"/>
@@ -551,8 +552,9 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipr-3b-AhM">
-                                <rect key="frame" x="16" y="165" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="185" width="568" height="20"/>
+                                <color key="tintColor" red="0.75659304441473563" green="0.092099737498299375" blue="0.18731676952291423" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" misplaced="YES">
@@ -560,23 +562,25 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGD-0g-EgM">
-                                <rect key="frame" x="16" y="531" width="568" height="30"/>
+                                <rect key="frame" x="16" y="525" width="568" height="36"/>
+                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="21"/>
                                 <state key="normal" title="Add Course">
+                                    <color key="titleColor" red="0.75659304439999997" green="0.092099737500000001" blue="0.18731676950000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="AAv-Hb-NHT" kind="show" id="Hjk-ef-XSE"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Diversity Requirement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9v-IV-zaY">
-                                <rect key="frame" x="16" y="222" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Units" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWh-2f-ZAd">
+                                <rect key="frame" x="16" y="213" width="42" height="22.5"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Units" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWh-2f-ZAd">
-                                <rect key="frame" x="16" y="193" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Diversity Requirement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9v-IV-zaY">
+                                <rect key="frame" x="16" y="243" width="568" height="21"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -586,19 +590,19 @@
                             <constraint firstItem="Ipr-3b-AhM" firstAttribute="leading" secondItem="epH-qI-9Rx" secondAttribute="leadingMargin" id="58y-dP-hmf"/>
                             <constraint firstItem="Cjp-vB-4Bn" firstAttribute="leading" secondItem="epH-qI-9Rx" secondAttribute="leadingMargin" id="6Ge-ik-YpI"/>
                             <constraint firstItem="NGD-0g-EgM" firstAttribute="leading" secondItem="epH-qI-9Rx" secondAttribute="leadingMargin" id="7ac-ph-Ewn"/>
+                            <constraint firstItem="Cjp-vB-4Bn" firstAttribute="top" secondItem="u8J-4z-STe" secondAttribute="bottom" constant="18" id="9gK-3L-lpW"/>
                             <constraint firstItem="Ipr-3b-AhM" firstAttribute="trailing" secondItem="epH-qI-9Rx" secondAttribute="trailingMargin" id="CGi-nR-9yI"/>
                             <constraint firstItem="mc5-12-6vc" firstAttribute="top" secondItem="NGD-0g-EgM" secondAttribute="bottom" constant="39" id="Gup-Hy-Spd"/>
-                            <constraint firstItem="e9v-IV-zaY" firstAttribute="top" secondItem="cWh-2f-ZAd" secondAttribute="bottom" constant="8" id="KiX-mU-NMw"/>
-                            <constraint firstItem="Ipr-3b-AhM" firstAttribute="top" secondItem="Cjp-vB-4Bn" secondAttribute="bottom" constant="23" id="LCu-81-9fs"/>
+                            <constraint firstItem="e9v-IV-zaY" firstAttribute="top" secondItem="cWh-2f-ZAd" secondAttribute="bottom" constant="7.5" id="JYP-Da-ENr"/>
                             <constraint firstItem="NGD-0g-EgM" firstAttribute="trailing" secondItem="epH-qI-9Rx" secondAttribute="trailingMargin" id="PfB-ew-O0R"/>
+                            <constraint firstItem="Ipr-3b-AhM" firstAttribute="top" secondItem="Cjp-vB-4Bn" secondAttribute="bottom" constant="18" id="Qxw-ip-CP1"/>
                             <constraint firstItem="u8J-4z-STe" firstAttribute="top" secondItem="fle-nH-YPc" secondAttribute="bottom" constant="10" id="VqH-S1-pe1"/>
+                            <constraint firstItem="cWh-2f-ZAd" firstAttribute="top" secondItem="Ipr-3b-AhM" secondAttribute="bottom" constant="7.5" id="lzF-6E-RZ5"/>
                             <constraint firstItem="u8J-4z-STe" firstAttribute="leading" secondItem="epH-qI-9Rx" secondAttribute="leadingMargin" id="mg1-QP-dFX"/>
                             <constraint firstItem="Cjp-vB-4Bn" firstAttribute="trailing" secondItem="epH-qI-9Rx" secondAttribute="trailingMargin" id="mhG-mc-was"/>
-                            <constraint firstItem="cWh-2f-ZAd" firstAttribute="top" secondItem="Ipr-3b-AhM" secondAttribute="bottom" constant="7.5" id="oor-MP-IiF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="u8J-4z-STe" secondAttribute="trailing" constant="-6" id="qom-rw-sOv"/>
                             <constraint firstItem="e9v-IV-zaY" firstAttribute="leading" secondItem="epH-qI-9Rx" secondAttribute="leadingMargin" id="rtl-4X-lsZ"/>
                             <constraint firstItem="cWh-2f-ZAd" firstAttribute="leading" secondItem="epH-qI-9Rx" secondAttribute="leadingMargin" id="wCw-5D-xSm"/>
-                            <constraint firstItem="Cjp-vB-4Bn" firstAttribute="top" secondItem="u8J-4z-STe" secondAttribute="bottom" constant="19.5" id="zPo-zb-QFi"/>
                         </constraints>
                     </view>
                     <connections>
@@ -611,7 +615,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdH-ui-YUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6030" y="361"/>
+            <point key="canvasLocation" x="5470" y="369"/>
         </scene>
         <!--Dis Lec Lab Table View Controller-->
         <scene sceneID="KGt-rV-TV3">
@@ -630,7 +634,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DisLecCell" textLabel="RL5-Wa-Eyp" detailTextLabel="f17-vn-Lce" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="dlE-xN-z1b">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DisLecCell" textLabel="RL5-Wa-Eyp" detailTextLabel="f17-vn-Lce" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="dlE-xN-z1b">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dlE-xN-z1b" id="rEu-4U-RBu">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -648,7 +652,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="tintColor" red="0.75659304439999997" green="0.092099737500000001" blue="0.18731676950000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.75659304439999997" green="0.092099737500000001" blue="0.18731676950000001" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -668,7 +674,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LT9-f4-ffP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6885" y="357"/>
+            <point key="canvasLocation" x="6257" y="370"/>
         </scene>
     </scenes>
 </document>

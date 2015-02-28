@@ -33,6 +33,7 @@ class CourseTableViewController: UITableViewController {
         activity.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         self.view.addSubview(activity)
         
+        
         delegate = localStorage()
     }
     

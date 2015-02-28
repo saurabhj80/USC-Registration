@@ -1,4 +1,4 @@
-//
+// edited file
 //  CourseDetailsViewController.swift
 //  USC Reg
 //
@@ -33,9 +33,16 @@ class CourseDetailsViewController: UIViewController {
             styledParagraph.alignment = NSTextAlignment.Justified
             var justifiedDescription = NSAttributedString(string: courseString!, attributes: [NSParagraphStyleAttributeName:styledParagraph, NSBaselineOffsetAttributeName: NSNumber(float: 0)])
             mainTextLabel?.attributedText = justifiedDescription
+            diversity.hidden = false
+            Units.hidden = false
             
         case 1:
-            mainTextLabel?.text = "blah"
+            mainTextLabel?.text = "Will displace the rating of the course and the professor from the course evaluation website. The API has not been provided. This will include a rating out of 5 and possibly reviews from students."
+            diversity.hidden = true
+            Units.hidden = true
+        
+        case 2:
+            mainTextLabel?.text = "Will display the syllabus for the course to give the student information about what exactly is going to be taught in the class"
             
         default:
             break;
@@ -88,6 +95,7 @@ class CourseDetailsViewController: UIViewController {
         mainTextLabel?.attributedText = justifiedDescription
         
         
+        //self.view.backgroundColor = UIColor.blueColor()
         
         
        let unitsString = "\(currentCourse!.maxUnits)"
@@ -96,12 +104,15 @@ class CourseDetailsViewController: UIViewController {
         
         if currentCourse?.divFlag == "Y"
         {
-            diversity.text = "Diversity Requirement Satisfied"
+            diversity.text = "Diversity Requirement: Fullfilled"
         }
         else
         {
-            diversity.text = "Diversity Requirement Not Satisfied"
+            diversity.text = "Diversity Requirement: Not Fullfilled"
         }
+    
+      let cardinalcolor : UIColor = UIColor(red: 140/255, green: 38/255, blue: 38/255, alpha: 1)
+       segControlOut.tintColor = cardinalcolor
        
      
     }

@@ -14,16 +14,14 @@
 		7C794BE31A996ACA00FBC428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BE21A996ACA00FBC428 /* AppDelegate.swift */; };
 		7C794BE61A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BE41A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld */; };
 		7C794BE81A996ACA00FBC428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BE71A996ACA00FBC428 /* ViewController.swift */; };
-		7C794BEB1A996ACA00FBC428 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C794BE91A996ACA00FBC428 /* Main.storyboard */; };
 		7C794BED1A996ACA00FBC428 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C794BEC1A996ACA00FBC428 /* Images.xcassets */; };
-		7C794BF01A996ACA00FBC428 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C794BEE1A996ACA00FBC428 /* LaunchScreen.xib */; };
 		7C794BFC1A996ACA00FBC428 /* USC_Web_RegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794BFB1A996ACA00FBC428 /* USC_Web_RegistrationTests.swift */; };
-		7C794C071A996B5600FBC428 /* local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C051A996B5600FBC428 /* local.swift */; };
 		7C794C081A996B5600FBC428 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C061A996B5600FBC428 /* SwiftyJSON.swift */; };
 		7C794C141A99927F00FBC428 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C131A99927F00FBC428 /* School.swift */; };
 		7C794C1A1A99928000FBC428 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C191A99928000FBC428 /* Department.swift */; };
 		7CA4780F1AA0135700A3F531 /* CourseBinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4780E1AA0135700A3F531 /* CourseBinTableViewController.swift */; };
 		7CA478111AA013CD00A3F531 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA478101AA013CD00A3F531 /* DetailsViewController.swift */; };
+		FF0B77EC1AA1794400451F3F /* local.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0B77EB1AA1794400451F3F /* local.swift */; };
 		FFA700F81A9E8CBE009930B8 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */; };
 		FFA700F91A9E8CBE009930B8 /* DeptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */; };
 		FFA700FA1A9E8CBE009930B8 /* SchoolTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */; };
@@ -51,18 +49,16 @@
 		7C794BE21A996ACA00FBC428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C794BE51A996ACA00FBC428 /* USC_Web_Registration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = USC_Web_Registration.xcdatamodel; sourceTree = "<group>"; };
 		7C794BE71A996ACA00FBC428 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7C794BEA1A996ACA00FBC428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C794BEC1A996ACA00FBC428 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7C794BEF1A996ACA00FBC428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7C794BF51A996ACA00FBC428 /* USC Web RegistrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "USC Web RegistrationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C794BFA1A996ACA00FBC428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C794BFB1A996ACA00FBC428 /* USC_Web_RegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USC_Web_RegistrationTests.swift; sourceTree = "<group>"; };
-		7C794C051A996B5600FBC428 /* local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = local.swift; sourceTree = "<group>"; };
 		7C794C061A996B5600FBC428 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		7C794C131A99927F00FBC428 /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		7C794C191A99928000FBC428 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
 		7CA4780E1AA0135700A3F531 /* CourseBinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseBinTableViewController.swift; sourceTree = "<group>"; };
 		7CA478101AA013CD00A3F531 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		FF0B77EB1AA1794400451F3F /* local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = local.swift; path = ../local.swift; sourceTree = "<group>"; };
 		FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseTableViewController.swift; path = ../CourseTableViewController.swift; sourceTree = "<group>"; };
 		FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeptTableViewController.swift; path = ../DeptTableViewController.swift; sourceTree = "<group>"; };
 		FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolTableViewController.swift; path = ../SchoolTableViewController.swift; sourceTree = "<group>"; };
@@ -120,13 +116,11 @@
 				FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */,
 				FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */,
 				7C794BE21A996ACA00FBC428 /* AppDelegate.swift */,
+				FF0B77EB1AA1794400451F3F /* local.swift */,
 				7C794BE71A996ACA00FBC428 /* ViewController.swift */,
-				7C794C051A996B5600FBC428 /* local.swift */,
 				FFA700FB1A9E8E61009930B8 /* Main.storyboard */,
 				7C794C061A996B5600FBC428 /* SwiftyJSON.swift */,
-				7C794BE91A996ACA00FBC428 /* Main.storyboard */,
 				7C794BEC1A996ACA00FBC428 /* Images.xcassets */,
-				7C794BEE1A996ACA00FBC428 /* LaunchScreen.xib */,
 				7C794BE41A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld */,
 				7C794BE01A996ACA00FBC428 /* Supporting Files */,
 			);
@@ -238,8 +232,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C794BEB1A996ACA00FBC428 /* Main.storyboard in Resources */,
-				7C794BF01A996ACA00FBC428 /* LaunchScreen.xib in Resources */,
 				7C794BED1A996ACA00FBC428 /* Images.xcassets in Resources */,
 				FFA700FD1A9E8EE9009930B8 /* Main.storyboard in Resources */,
 			);
@@ -265,9 +257,9 @@
 				7C0AD7951A9C1C9B00171EAE /* Course.swift in Sources */,
 				7C794BE81A996ACA00FBC428 /* ViewController.swift in Sources */,
 				7C794C1A1A99928000FBC428 /* Department.swift in Sources */,
+				FF0B77EC1AA1794400451F3F /* local.swift in Sources */,
 				1F0A6C711AA050CA000701CA /* CourseDetailsViewController.swift in Sources */,
 				7C794C141A99927F00FBC428 /* School.swift in Sources */,
-				7C794C071A996B5600FBC428 /* local.swift in Sources */,
 				7CA4780F1AA0135700A3F531 /* CourseBinTableViewController.swift in Sources */,
 				FFA700F91A9E8CBE009930B8 /* DeptTableViewController.swift in Sources */,
 				7C794BE31A996ACA00FBC428 /* AppDelegate.swift in Sources */,
@@ -296,25 +288,6 @@
 			targetProxy = 7C794BF61A996ACA00FBC428 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		7C794BE91A996ACA00FBC428 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7C794BEA1A996ACA00FBC428 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7C794BEE1A996ACA00FBC428 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7C794BEF1A996ACA00FBC428 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7C794BFD1A996ACA00FBC428 /* Debug */ = {
