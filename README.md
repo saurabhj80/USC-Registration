@@ -1,3 +1,0 @@
-# USC-Registration
-
-YOLOSWAG
