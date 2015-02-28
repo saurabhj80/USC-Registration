@@ -94,6 +94,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
             var json = JSON(data: data)
             var tempArray = [section]()
             
+            if (json["V_SOC_SECTION"].arrayValue.count != 0) {
             for j in 0 ... (json["V_SOC_SECTION"].arrayValue.count - 1){
                 
             println("SECTION ID")
@@ -103,6 +104,8 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
         
             
             tempArray.append(tempSection)
+                
+            }
                 
             }
             
@@ -156,6 +159,8 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                 var json = JSON(data: data)
                 var tempArray: [course] = []
                 
+                
+                if (json.arrayValue.count != 0) {
                 for i in 0 ... (json.arrayValue.count - 1){
                     
                     println(json[i]["SIS_COURSE_ID"].stringValue)
@@ -166,7 +171,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                     println(tempArray[i].description)
                     
                 }
-                
+                }
                 controller.courseList = tempArray
                 dispatch_async(dispatch_get_main_queue()) {
                     controller.stopActivity()
@@ -200,6 +205,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                     
                     var tempArray :[department] = []
                     
+                    if (json[0]["SOC_DEPARTMENT_CODE"].arrayValue.count != 0) {
                     for i in 0 ... (json[0]["SOC_DEPARTMENT_CODE"].arrayValue.count - 1) {
                         
                         println(json[0]["SOC_DEPARTMENT_CODE"][i]["SOC_DEPARTMENT_CODE"].stringValue)
@@ -207,6 +213,8 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                         let temp = department (departmentCode: json[0]["SOC_DEPARTMENT_CODE"][i]["SOC_DEPARTMENT_CODE"].stringValue, departmentDescription: json[0]["SOC_DEPARTMENT_CODE"][i]["SOC_DEPARTMENT_DESCRIPTION"].stringValue, schoolCode: json[0]["SOC_DEPARTMENT_CODE"][i]["SOC_SCHOOL_CODE"].stringValue)
                         
                         tempArray.append(temp)
+                        
+                    }
                         
                     }
                     
@@ -240,11 +248,15 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                 let x = json.arrayValue.count
             
                 var tempArray :[school] = []
+                
+                if (json.arrayValue.count != 0){
                 for i in 0 ... (json.arrayValue.count - 1) {
                     
                     let temp = school (schoolCode: json[i]["SOC_SCHOOL_CODE"].stringValue, schoolDescription: json[i]["SOC_SCHOOL_DESCRIPTION"].stringValue)
                     
                     tempArray.append(temp)
+                    
+                }
                     
                 }
                 
