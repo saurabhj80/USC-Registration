@@ -26,7 +26,20 @@ class DisLecLabTableViewController: UITableViewController {
     var selectedSections = [section]()
     var allSections = [section]()
     var delegate: DisLecLabTableViewControllerDelegate? = nil
+    var nothingSelectedLecture = true
+    var nothingSelectedDiscussion = true
+    var nothingSelectedQuiz = true
+    var nothingSelectedLab = true
+    var nothingSelectedOther = true
     
+    /*var checkedLectures = [Bool]()
+    var checkedDiscussion = [Bool]()
+    var checkedQuiz = [Bool]()
+    var checkedLabs = [Bool]()
+    var checkekOther = [Bool]()
+    */
+    
+    var activity = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +54,18 @@ class DisLecLabTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // Setting Up the Activity Indicator
+        activity.frame = CGRectMake(CGRectGetMidX(self.tableView.bounds) - 22,CGRectGetMidY(self.tableView.bounds) - 22, 44.0, 44.0)
+        activity.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        self.view.addSubview(activity)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
+        //activity.startAnimating()
+        //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
         delegate = localStorage()
         delegate?.reloadDisLecLabTable(self)
@@ -62,6 +83,8 @@ class DisLecLabTableViewController: UITableViewController {
     
     @IBAction func Add(sender: AnyObject) {
         
+        activity.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
         for sections in selectedSections{
             println("VIEWCONTROLLER")
@@ -74,7 +97,10 @@ class DisLecLabTableViewController: UITableViewController {
     
     func someSelector() {
         // Something after a delay
-        println("Pop")
+        
+        activity.stopAnimating()
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -121,12 +147,59 @@ class DisLecLabTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("DisLecCell", forIndexPath: indexPath) as UITableViewCell
         
        println("here")
- 
-        println(lectures.count)
 
         if indexPath.section == 0 {
             cell.textLabel?.text = " Section: " + lectures[indexPath.row].section
             cell.detailTextLabel?.text = lectures[indexPath.row].instructor + "     " + lectures[indexPath.row].beginTime + "-" + lectures[indexPath.row].endTime + "    " + lectures[indexPath.row].day
+            
+            
+            if lectures[indexPath.row].checked == 0
+            {
+               
+               /* if nothingSelectedLecture == false{
+                    cell.userInteractionEnabled = false
+                    cell.textLabel?.enabled = false
+                    cell.detailTextLabel?.enabled = false
+                }
+*/
+                
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            
+               
+                
+            }
+            else
+            {
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                /*
+                cell.userInteractionEnabled = true
+                cell.textLabel?.enabled = true
+                cell.detailTextLabel?.enabled = true
+                */
+
+            }
+            
+            if nothingSelectedLecture == false
+            {
+                if(lectures[indexPath.row].checked == 1)
+                {
+                    cell.userInteractionEnabled = true
+                    cell.textLabel?.enabled = true
+                    cell.detailTextLabel?.enabled = true
+                }
+                else{
+                    cell.userInteractionEnabled = false
+                    cell.textLabel?.enabled = false
+                    cell.detailTextLabel?.enabled = false
+                }
+               
+            }
+            else
+            {
+                cell.userInteractionEnabled = true
+                cell.textLabel?.enabled = true
+                cell.detailTextLabel?.enabled = true
+            }
             
         }
         
@@ -134,22 +207,152 @@ class DisLecLabTableViewController: UITableViewController {
             cell.textLabel?.text = "Section: " + discussion[indexPath.row].section
             cell.detailTextLabel?.text = discussion[indexPath.row].beginTime + "-" + discussion[indexPath.row].endTime + "    " + discussion[indexPath.row].day
             
+            if discussion[indexPath.row].checked == 0
+            {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+               
+            }
+            else
+            {
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                
+            }
+            if nothingSelectedDiscussion == false
+            {
+                if(discussion[indexPath.row].checked == 1)
+                {
+                    cell.userInteractionEnabled = true
+                    cell.textLabel?.enabled = true
+                    cell.detailTextLabel?.enabled = true
+                }
+                else{
+                    cell.userInteractionEnabled = false
+                    cell.textLabel?.enabled = false
+                    cell.detailTextLabel?.enabled = false
+                }
+                
+            }
+            else
+            {
+                cell.userInteractionEnabled = true
+                cell.textLabel?.enabled = true
+                cell.detailTextLabel?.enabled = true
+            }
+
         }
         
         if indexPath.section == 2 {
             cell.textLabel?.text = "Section: " + labs[indexPath.row].section
             cell.detailTextLabel?.text = labs[indexPath.row].beginTime + "-" + labs[indexPath.row].endTime + "    " + labs[indexPath.row].day
+            
+            if labs[indexPath.row].checked == 0
+            {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            }
+            else
+            {
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                
+            }
+            if nothingSelectedLab == false
+            {
+                if(labs[indexPath.row].checked == 1)
+                {
+                    cell.userInteractionEnabled = true
+                    cell.textLabel?.enabled = true
+                    cell.detailTextLabel?.enabled = true
+                }
+                else{
+                    cell.userInteractionEnabled = false
+                    cell.textLabel?.enabled = false
+                    cell.detailTextLabel?.enabled = false
+                }
+                
+            }
+            else
+            {
+                cell.userInteractionEnabled = true
+                cell.textLabel?.enabled = true
+                cell.detailTextLabel?.enabled = true
+            }
+
         }
         
         if indexPath.section == 3{
             cell.textLabel?.text = "Section: " + quiz[indexPath.row].section
             cell.detailTextLabel?.text = quiz[indexPath.row].beginTime + "-" + quiz[indexPath.row].endTime + "    " + quiz[indexPath.row].day
             
+            if quiz[indexPath.row].checked == 0
+            {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                
+            }
+            else
+            {
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+               
+            }
+            if nothingSelectedQuiz == false
+            {
+                if(quiz[indexPath.row].checked == 1)
+                {
+                    cell.userInteractionEnabled = true
+                    cell.textLabel?.enabled = true
+                    cell.detailTextLabel?.enabled = true
+                }
+                else{
+                    cell.userInteractionEnabled = false
+                    cell.textLabel?.enabled = false
+                    cell.detailTextLabel?.enabled = false
+                }
+                
+            }
+            else
+            {
+                cell.userInteractionEnabled = true
+                cell.textLabel?.enabled = true
+                cell.detailTextLabel?.enabled = true
+            }
+
+            
         }
         
         if indexPath.section == 4{
             cell.textLabel?.text = "Section: " + other[indexPath.row].section
             cell.detailTextLabel?.text = other[indexPath.row].beginTime + "-" + other[indexPath.row].endTime + "    " + other[indexPath.row].day
+            
+            if other[indexPath.row].checked == 0
+            {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                
+            }
+            else
+            {
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+               
+            }
+            if nothingSelectedOther == false
+            {
+                if(other[indexPath.row].checked == 1)
+                {
+                    cell.userInteractionEnabled = true
+                    cell.textLabel?.enabled = true
+                    cell.detailTextLabel?.enabled = true
+                }
+                else{
+                    cell.userInteractionEnabled = false
+                    cell.textLabel?.enabled = false
+                    cell.detailTextLabel?.enabled = false
+                }
+                
+            }
+            else
+            {
+                cell.userInteractionEnabled = true
+                cell.textLabel?.enabled = true
+                cell.detailTextLabel?.enabled = true
+            }
+
             
         }
         
@@ -188,7 +391,10 @@ class DisLecLabTableViewController: UITableViewController {
                 
                 var sectionType = indexPath.section
                 if sectionType == 0{
+                    lectures[indexPath.row].checked = 1;
+                    nothingSelectedLecture = false
                     selectedSections.append(lectures[indexPath.row])
+                    
                     
                     for(var i=0; i < self.tableView.numberOfRowsInSection(sectionType); i++)
                     {
@@ -209,7 +415,10 @@ class DisLecLabTableViewController: UITableViewController {
                }
                 else if sectionType == 1{
                     println("changed labs")
+                    discussion[indexPath.row].checked = 1;
+                    nothingSelectedDiscussion = false
                     selectedSections.append(discussion[indexPath.row])
+                    
                    for(var i=0; i < self.tableView.numberOfRowsInSection(sectionType); i++)
                     {
                         
@@ -227,7 +436,10 @@ class DisLecLabTableViewController: UITableViewController {
                 }
                 else if sectionType == 2{
                     println("changed quiz")
+                     labs[indexPath.row].checked = 1;
+                    nothingSelectedLab = false
                     selectedSections.append(labs[indexPath.row])
+                   
                    for(var i=0; i < self.tableView.numberOfRowsInSection(sectionType); i++)
                     {
                         
@@ -243,9 +455,12 @@ class DisLecLabTableViewController: UITableViewController {
                     
                     
                 }
-                else {
+                else if sectionType == 3{
                     println("changed quizzes")
+                    quiz[indexPath.row].checked = 1;
+                    nothingSelectedQuiz = false
                     selectedSections.append(quiz[indexPath.row])
+                    quiz[indexPath.row].checked = 1;
                     for(var i=0; i < self.tableView.numberOfRowsInSection(sectionType); i++)
                     {
                         
@@ -260,6 +475,24 @@ class DisLecLabTableViewController: UITableViewController {
                     }
                     
                 }
+                else{
+                    other[indexPath.row].checked = 1;
+                    nothingSelectedOther = false
+                    selectedSections.append(other[indexPath.row])
+                    
+                    for(var i=0; i < self.tableView.numberOfRowsInSection(sectionType); i++)
+                    {
+                        
+                        var indexPathForDisablingInteraction = NSIndexPath(forRow: i, inSection: sectionType)
+                        cell = tableView.cellForRowAtIndexPath(indexPathForDisablingInteraction)
+                        if(indexPathForDisablingInteraction != indexPath)
+                        {
+                            cell?.userInteractionEnabled = false
+                            cell?.textLabel?.enabled = false
+                            cell?.detailTextLabel?.enabled = false
+                        }
+                    }
+                }
             }
         }
         else{
@@ -269,6 +502,8 @@ class DisLecLabTableViewController: UITableViewController {
                 var sectionType = indexPath.section
                 if sectionType == 0
                 {
+                    lectures[indexPath.row].checked = 0;
+                    nothingSelectedLecture = true
                     var sectionID = lectures[indexPath.row].section
                     for var i = 0; i < selectedSections.count; i++ {
                         
@@ -290,19 +525,11 @@ class DisLecLabTableViewController: UITableViewController {
                             cell?.detailTextLabel?.enabled = true
                         
                     }
-
-
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                   
+               
                 }
                 else if sectionType == 1{
+                    discussion[indexPath.row].checked = 0;
+                    nothingSelectedDiscussion = true
                     var sectionID = discussion[indexPath.row].section
                     for var i = 0; i < selectedSections.count; i++ {
                         
@@ -328,6 +555,8 @@ class DisLecLabTableViewController: UITableViewController {
                    
                 }
                 else if sectionType == 2{
+                    labs[indexPath.row].checked = 0;
+                    nothingSelectedLab = true
                     var sectionID = labs[indexPath.row].section
                     for var i = 0; i < selectedSections.count; i++ {
                         
@@ -352,7 +581,9 @@ class DisLecLabTableViewController: UITableViewController {
 
                    
                 }
-                else {
+                else if sectionType == 3{
+                    quiz[indexPath.row].checked = 0;
+                    nothingSelectedQuiz = true
                     var sectionID = quiz[indexPath.row].section
                     for var i = 0; i < selectedSections.count; i++ {
                         
@@ -375,6 +606,31 @@ class DisLecLabTableViewController: UITableViewController {
                     }
 
                   
+                }
+                else{
+                    other[indexPath.row].checked = 0;
+                    nothingSelectedOther = true
+                    var sectionID = other[indexPath.row].section
+                    for var i = 0; i < selectedSections.count; i++ {
+                        
+                        if selectedSections[i].section == sectionID
+                        {
+                            selectedSections.removeAtIndex(i)
+                        }
+                        
+                    }
+                    for(var i=0; i < self.tableView.numberOfRowsInSection(sectionType); i++)
+                    {
+                        
+                        var indexPathForDisablingInteraction = NSIndexPath(forRow: i, inSection: sectionType)
+                        cell = tableView.cellForRowAtIndexPath(indexPathForDisablingInteraction)
+                        
+                        cell?.userInteractionEnabled = true
+                        cell?.textLabel?.enabled = true
+                        cell?.detailTextLabel?.enabled = true
+                        
+                    }
+
                 }
             }
         }

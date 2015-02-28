@@ -27,6 +27,9 @@ class DetailsViewController: UIViewController, EKEventEditViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(red: 120.0/256, green: 0.0/256, blue: 0.0/256, alpha: 1)
+        
     }
     
     override func didReceiveMemoryWarning() {

@@ -21,12 +21,14 @@
 		7C794C1A1A99928000FBC428 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C794C191A99928000FBC428 /* Department.swift */; };
 		7CA4780F1AA0135700A3F531 /* CourseBinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4780E1AA0135700A3F531 /* CourseBinTableViewController.swift */; };
 		7CA478111AA013CD00A3F531 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA478101AA013CD00A3F531 /* DetailsViewController.swift */; };
-		FF0B77EC1AA1794400451F3F /* local.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0B77EB1AA1794400451F3F /* local.swift */; };
+		FF0B77EE1AA18B8800451F3F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0B77ED1AA18B8700451F3F /* SearchViewController.swift */; };
+		FF0B77F21AA1956500451F3F /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0B77F11AA1956500451F3F /* SearchResultsTableViewController.swift */; };
 		FFA700F81A9E8CBE009930B8 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */; };
 		FFA700F91A9E8CBE009930B8 /* DeptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */; };
 		FFA700FA1A9E8CBE009930B8 /* SchoolTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */; };
 		FFA700FC1A9E8E61009930B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFA700FB1A9E8E61009930B8 /* Main.storyboard */; };
 		FFA700FD1A9E8EE9009930B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFA700FB1A9E8E61009930B8 /* Main.storyboard */; };
+		FFD526AD1AA19F76005D6AB2 /* local .swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD526AC1AA19F76005D6AB2 /* local .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,11 +60,13 @@
 		7C794C191A99928000FBC428 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
 		7CA4780E1AA0135700A3F531 /* CourseBinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseBinTableViewController.swift; sourceTree = "<group>"; };
 		7CA478101AA013CD00A3F531 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		FF0B77EB1AA1794400451F3F /* local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = local.swift; path = ../local.swift; sourceTree = "<group>"; };
+		FF0B77ED1AA18B8700451F3F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FF0B77F11AA1956500451F3F /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseTableViewController.swift; path = ../CourseTableViewController.swift; sourceTree = "<group>"; };
 		FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeptTableViewController.swift; path = ../DeptTableViewController.swift; sourceTree = "<group>"; };
 		FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolTableViewController.swift; path = ../SchoolTableViewController.swift; sourceTree = "<group>"; };
 		FFA700FB1A9E8E61009930B8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "USC Web RegistrationTests/Main.storyboard"; sourceTree = SOURCE_ROOT; };
+		FFD526AC1AA19F76005D6AB2 /* local .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "local .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,17 +112,19 @@
 		7C794BDF1A996ACA00FBC428 /* USC Web Registration */ = {
 			isa = PBXGroup;
 			children = (
-				7CA478101AA013CD00A3F531 /* DetailsViewController.swift */,
-				7CA4780E1AA0135700A3F531 /* CourseBinTableViewController.swift */,
-				FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */,
-				1F0A6C701AA050CA000701CA /* CourseDetailsViewController.swift */,
+				FF0B77F11AA1956500451F3F /* SearchResultsTableViewController.swift */,
 				1F0A6C6E1AA050A6000701CA /* DisLecLabTableViewController.swift */,
+				1F0A6C701AA050CA000701CA /* CourseDetailsViewController.swift */,
+				FFA700F41A9E8CBE009930B8 /* CourseTableViewController.swift */,
 				FFA700F51A9E8CBE009930B8 /* DeptTableViewController.swift */,
 				FFA700F61A9E8CBE009930B8 /* SchoolTableViewController.swift */,
+				7CA4780E1AA0135700A3F531 /* CourseBinTableViewController.swift */,
+				7CA478101AA013CD00A3F531 /* DetailsViewController.swift */,
 				7C794BE21A996ACA00FBC428 /* AppDelegate.swift */,
-				FF0B77EB1AA1794400451F3F /* local.swift */,
+				FFD526AC1AA19F76005D6AB2 /* local .swift */,
 				7C794BE71A996ACA00FBC428 /* ViewController.swift */,
 				FFA700FB1A9E8E61009930B8 /* Main.storyboard */,
+				FF0B77ED1AA18B8700451F3F /* SearchViewController.swift */,
 				7C794C061A996B5600FBC428 /* SwiftyJSON.swift */,
 				7C794BEC1A996ACA00FBC428 /* Images.xcassets */,
 				7C794BE41A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld */,
@@ -255,9 +261,10 @@
 				1F0A6C6F1AA050A6000701CA /* DisLecLabTableViewController.swift in Sources */,
 				FFA700F81A9E8CBE009930B8 /* CourseTableViewController.swift in Sources */,
 				7C0AD7951A9C1C9B00171EAE /* Course.swift in Sources */,
+				FF0B77EE1AA18B8800451F3F /* SearchViewController.swift in Sources */,
 				7C794BE81A996ACA00FBC428 /* ViewController.swift in Sources */,
 				7C794C1A1A99928000FBC428 /* Department.swift in Sources */,
-				FF0B77EC1AA1794400451F3F /* local.swift in Sources */,
+				FFD526AD1AA19F76005D6AB2 /* local .swift in Sources */,
 				1F0A6C711AA050CA000701CA /* CourseDetailsViewController.swift in Sources */,
 				7C794C141A99927F00FBC428 /* School.swift in Sources */,
 				7CA4780F1AA0135700A3F531 /* CourseBinTableViewController.swift in Sources */,
@@ -265,6 +272,7 @@
 				7C794BE31A996ACA00FBC428 /* AppDelegate.swift in Sources */,
 				FFA700FA1A9E8CBE009930B8 /* SchoolTableViewController.swift in Sources */,
 				7C794C081A996B5600FBC428 /* SwiftyJSON.swift in Sources */,
+				FF0B77F21AA1956500451F3F /* SearchResultsTableViewController.swift in Sources */,
 				7C52C5341AA079070007DE46 /* Section.swift in Sources */,
 				7C794BE61A996ACA00FBC428 /* USC_Web_Registration.xcdatamodeld in Sources */,
 				7CA478111AA013CD00A3F531 /* DetailsViewController.swift in Sources */,

@@ -56,7 +56,7 @@ class CourseBinTableViewController: UITableViewController  {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        println("RELDJFLKAJSLKF AKFJ ASKJF LKASJF LKASJFLK JA")
+        //println("RELDJFLKAJSLKF AKFJ ASKJF LKASJF LKASJFLK JA")
         self.refresh()
     }
     
@@ -95,13 +95,15 @@ class CourseBinTableViewController: UITableViewController  {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
         cell.textLabel?.text = self.arr[indexPath.row].sisCourseID
+        cell.detailTextLabel?.text = self.arr[indexPath.row].section + "    " + self.arr[indexPath.row].day + "   " + self.arr[indexPath.row].beginTime + " - " + self.arr[indexPath.row].endTime
         cell.textLabel?.font = UIFont(name: "GillSans-light", size: 22)
+        cell.detailTextLabel?.font = UIFont(name: "GillSans-Light", size: 18);
         
         return cell
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50;
+        return 75;
     }
     
     // MARK : Table View Delegate

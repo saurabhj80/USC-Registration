@@ -11,7 +11,7 @@ import CoreData
 import UIKit
 
 struct section {
-    
+    var checked: Double
     var sectionID: Double
     
     // var termcode: String
@@ -76,7 +76,7 @@ struct school {
     
 }
 
-class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerDelegate, CourseTableViewControllerDelegate, DisLecLabTableViewControllerDelegate, CourseBinTableViewControllerDelegate {
+class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerDelegate, CourseTableViewControllerDelegate, DisLecLabTableViewControllerDelegate, CourseBinTableViewControllerDelegate, SearchResultsTableViewControllerDelegate {
     
     func reloadDisLecLabTable(controller: DisLecLabTableViewController) {
         
@@ -95,12 +95,29 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
             var tempArray = [section]()
             
             if (json["V_SOC_SECTION"].arrayValue.count != 0) {
+                
                 for j in 0 ... (json["V_SOC_SECTION"].arrayValue.count - 1){
                     
                     println("SECTION ID")
                     println(json["V_SOC_SECTION"][j]["SECTION_ID"].doubleValue)
                     
-                    let tempSection = section (sectionID: json["V_SOC_SECTION"][j]["SECTION_ID"].doubleValue, courseID: json["COURSE_ID"].doubleValue, sisCourseID: json["SIS_COURSE_ID"].stringValue, name: json ["V_SOC_SECTION"][j]["NAME"].stringValue, section: json["V_SOC_SECTION"][j]["SECTION"].stringValue, session: json["V_SOC_SECTION"][j]["SESSION"].stringValue, units: json["V_SOC_SECTION"][j]["UNIT_CODE"].doubleValue, type: json["V_SOC_SECTION"][j]["TYPE"].stringValue, beginTime: json["V_SOC_SECTION"][j]["BEGIN_TIME"].stringValue, endTime: json["V_SOC_SECTION"][j]["END_TIME"].stringValue, day: json["V_SOC_SECTION"][j]["DAY"].stringValue, numRegistered: json["V_SOC_SECTION"][j]["REGISTERED"].doubleValue, numSeats: json["V_SOC_SECTION"][j]["SEATS"].doubleValue, instructor: json["V_SOC_SECTION"][j]["INSTRUCTOR"].stringValue, location: json["V_SOC_SECTION"][j]["LOCATION"].stringValue, addDate: json["V_SOC_SECTION"][j]["ADD_DATE"].stringValue, cancelDate: json["V_SOC_SECTION"][j]["CANCEL_DATE"].stringValue, PublishFlag: json["V_SOC_SECTION"][j]["PUBLISH_FLAG"].stringValue)
+                    var dayString: String
+                    if( json["V_SOC_SECTION"][j]["DAY"].stringValue == "H") {
+                        dayString = "Th"
+                    }
+                    
+                    if (json["V_SOC_SECTION"][j]["DAY"].stringValue == "TH") {
+                        
+                        dayString = "TTh"
+                    }
+                    
+                    else {
+                    
+                        dayString = json["V_SOC_SECTION"][j]["DAY"].stringValue
+                        
+                    }
+                    
+                    let tempSection = section (checked: 0, sectionID: json["V_SOC_SECTION"][j]["SECTION_ID"].doubleValue, courseID: json["COURSE_ID"].doubleValue, sisCourseID: json["SIS_COURSE_ID"].stringValue, name: json ["V_SOC_SECTION"][j]["NAME"].stringValue, section: json["V_SOC_SECTION"][j]["SECTION"].stringValue, session: json["V_SOC_SECTION"][j]["SESSION"].stringValue, units: json["V_SOC_SECTION"][j]["UNIT_CODE"].doubleValue, type: json["V_SOC_SECTION"][j]["TYPE"].stringValue, beginTime: json["V_SOC_SECTION"][j]["BEGIN_TIME"].stringValue, endTime: json["V_SOC_SECTION"][j]["END_TIME"].stringValue, day: dayString, numRegistered: json["V_SOC_SECTION"][j]["REGISTERED"].doubleValue, numSeats: json["V_SOC_SECTION"][j]["SEATS"].doubleValue, instructor: json["V_SOC_SECTION"][j]["INSTRUCTOR"].stringValue, location: json["V_SOC_SECTION"][j]["LOCATION"].stringValue, addDate: json["V_SOC_SECTION"][j]["ADD_DATE"].stringValue, cancelDate: json["V_SOC_SECTION"][j]["CANCEL_DATE"].stringValue, PublishFlag: json["V_SOC_SECTION"][j]["PUBLISH_FLAG"].stringValue)
                     
                     
                     tempArray.append(tempSection)
@@ -371,7 +388,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                 println("count %d",fetchResults.count)
                 for i in 0 ... (fetchResults.count - 1)  {
                     
-                    var tempSection = section(sectionID: fetchResults[i].sectonID, courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, name: fetchResults[i].name, section: fetchResults[i].section, session: fetchResults[i].session, units: fetchResults[i].units, type: fetchResults[i].type, beginTime: fetchResults[i].beginTime, endTime: fetchResults[i].endTime, day: fetchResults[i].day, numRegistered: fetchResults[i].numRegistered, numSeats: fetchResults[i].numSeats, instructor: fetchResults[i].instructor, location: fetchResults[i].location, addDate: fetchResults[i].addDate, cancelDate: fetchResults[i].cancelDate, PublishFlag: fetchResults[i].publishFlag)
+                    var tempSection = section(checked: 0, sectionID: fetchResults[i].sectonID, courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, name: fetchResults[i].name, section: fetchResults[i].section, session: fetchResults[i].session, units: fetchResults[i].units, type: fetchResults[i].type, beginTime: fetchResults[i].beginTime, endTime: fetchResults[i].endTime, day: fetchResults[i].day, numRegistered: fetchResults[i].numRegistered, numSeats: fetchResults[i].numSeats, instructor: fetchResults[i].instructor, location: fetchResults[i].location, addDate: fetchResults[i].addDate, cancelDate: fetchResults[i].cancelDate, PublishFlag: fetchResults[i].publishFlag)
                     
                     toReturn.append(tempSection)
                     
@@ -413,7 +430,26 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                 println("count %d",fetchResults.count)
                 for i in 0 ... (fetchResults.count - 1)  {
                     
-                    var tempSection = section(sectionID: fetchResults[i].sectonID, courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, name: fetchResults[i].name, section: fetchResults[i].section, session: fetchResults[i].session, units: fetchResults[i].units, type: fetchResults[i].type, beginTime: fetchResults[i].beginTime, endTime: fetchResults[i].endTime, day: fetchResults[i].day, numRegistered: fetchResults[i].numRegistered, numSeats: fetchResults[i].numSeats, instructor: fetchResults[i].instructor, location: fetchResults[i].location, addDate: fetchResults[i].addDate, cancelDate: fetchResults[i].cancelDate, PublishFlag: fetchResults[i].publishFlag)
+                    var dayString: String
+                    
+                    if( fetchResults[i].day == "H") {
+                        dayString = "Th"
+                    }
+                    
+                    if (fetchResults[i].day == "TH") {
+                        
+                        dayString = "TTh"
+                    }
+                        
+                    else {
+                        
+                        dayString = fetchResults[i].day
+                        
+                    }
+                    
+                    println("coursename")
+                    println(fetchResults[i].sisCourseID)
+                    var tempSection = section(checked: 0, sectionID: fetchResults[i].sectonID, courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, name: fetchResults[i].name, section: fetchResults[i].section, session: fetchResults[i].session, units: fetchResults[i].units, type: fetchResults[i].type, beginTime: fetchResults[i].beginTime, endTime: fetchResults[i].endTime, day: dayString, numRegistered: fetchResults[i].numRegistered, numSeats: fetchResults[i].numSeats, instructor: fetchResults[i].instructor, location: fetchResults[i].location, addDate: fetchResults[i].addDate, cancelDate: fetchResults[i].cancelDate, PublishFlag: fetchResults[i].publishFlag)
                     
                     toReturn.append(tempSection)
                     
@@ -540,7 +576,7 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
                 
                 for i in 0 ... (fetchResults.count - 1){
                     
-                    toReturn.append(section(sectionID: fetchResults[i].sectonID,  courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, name: fetchResults[i].name, section: fetchResults[i].section, session: fetchResults[i].session, units: fetchResults[i].units, type: fetchResults[i].type, beginTime: fetchResults[i].beginTime, endTime: fetchResults[i].endTime, day: fetchResults[i].day, numRegistered: fetchResults[i].numRegistered, numSeats: fetchResults[i].numSeats, instructor: fetchResults[i].instructor, location: fetchResults[i].location, addDate: fetchResults[i].addDate, cancelDate: fetchResults[i].cancelDate, PublishFlag: fetchResults[i].publishFlag))
+                    toReturn.append(section(checked: 0, sectionID: fetchResults[i].sectonID,  courseID: fetchResults[i].courseID, sisCourseID: fetchResults[i].sisCourseID, name: fetchResults[i].name, section: fetchResults[i].section, session: fetchResults[i].session, units: fetchResults[i].units, type: fetchResults[i].type, beginTime: fetchResults[i].beginTime, endTime: fetchResults[i].endTime, day: fetchResults[i].day, numRegistered: fetchResults[i].numRegistered, numSeats: fetchResults[i].numSeats, instructor: fetchResults[i].instructor, location: fetchResults[i].location, addDate: fetchResults[i].addDate, cancelDate: fetchResults[i].cancelDate, PublishFlag: fetchResults[i].publishFlag))
                     
                 }
                 
@@ -577,6 +613,8 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
             tempSection.termCode = json[0]["TERM_CODE"].stringValue
             tempSection.courseID = json[0]["COURSE_ID"].doubleValue
             tempSection.sisCourseID = json[0]["SIS_COURSE_ID"].stringValue
+            println ("Adeded")
+            println (tempSection.sisCourseID)
             tempSection.name = json[0]["NAME"].stringValue
             tempSection.section = json[0]["SECTION"].stringValue
             tempSection.session = json[0]["SESSION"].stringValue
@@ -639,4 +677,64 @@ class localStorage : SchoolTableViewControllerDelegate, DeptTableViewControllerD
         
         return 4
     }
+    
+    func searchForCourses(keywords: String, coursename: String, deptname: String, units: Double, controller: SearchResultsTableViewController) {
+        var toReturn = [course]()
+        
+        if ((coursename != "" || units != -1) || (keywords != "" || deptname != "")) {
+            
+            let url = NSURL(string: "http://petri.esd.usc.edu/socAPI/Courses/20151")
+            let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let session = NSURLSession(configuration: config)
+            
+            let task = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) -> Void in
+                
+                
+                var json = JSON(data: data)
+                var tempArray: [course] = []
+                println ("data")
+                println(json.arrayValue.count)
+                if (json.arrayValue.count != 0) {
+                    for i in 0 ... (json.arrayValue.count - 1){
+                        
+                        if (json[i]["DESCRIPTION"].stringValue.lowercaseString.rangeOfString(keywords.lowercaseString) != nil) {
+                            
+                            println("found keywords")
+                            
+                        }
+                        
+                        if ((json[i]["MAX_UNITS"].doubleValue == units || json[i]["SIS_COURSE_ID"].stringValue == coursename) || (json[i]["DESCRIPTION"].stringValue.lowercaseString.rangeOfString(keywords.lowercaseString) != nil || json[i]["SIS_COURSE_ID"].stringValue.rangeOfString(deptname) != nil)) {
+                            
+                            // println(json[i]["SIS_COURSE_ID"].stringValue)
+                            var tempCourse = course (departmentCode: "", courseID: json[i]["COURSE_ID"].doubleValue, sisCourseID: json[i]["SIS_COURSE_ID"].stringValue, title: json[i]["TITLE"].stringValue, minUnits: json[i]["MIN_UNITS"].doubleValue, maxUnits: json[i]["MAX_UNITS"].doubleValue, totalMax: json[i]["TOTAL_MAX_UNITS"].doubleValue, description: json[i]["DESCRIPTION"].stringValue, divFlag: json[i]["DIVERSITY_FLAG"].stringValue, effecTerm: json[i]["EFFECTIVE_TERM_CODE"].stringValue)
+                            
+                            tempArray.append(tempCourse)
+                            println("appended")
+                            println(tempCourse.description)
+                            
+                        }
+                        
+                    }
+                }
+                
+                println("searched")
+                
+                controller.courseList = tempArray
+                dispatch_async(dispatch_get_main_queue()) {
+                    controller.activity.stopAnimating()
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    controller.tableView.reloadData()
+                }
+                
+            })
+            
+            
+            task.resume()
+            
+        }
+        
+        
+    }
+    
+     
 }
